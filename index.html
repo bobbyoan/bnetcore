@@ -88,6 +88,25 @@
                 </div>
                 <a href="#contact" data-i18n="nav_cta" class="px-5 py-2.5 bg-slate-950 border border-slate-800 rounded-md text-xs font-mono tracking-wider text-white hover:border-brand-cyan transition duration-300">Get a Quote</a>
             </div>
+
+            <div class="flex md:hidden items-center space-x-3 relative z-20">
+                <button id="mobile-menu-btn" class="text-slate-300 hover:text-brand-cyan p-2 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-brand-deep/95 backdrop-blur-lg px-4 pt-4 pb-6 space-y-4">
+            <a href="#home" data-i18n="nav_home" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">Home</a>
+            <a href="#services" data-i18n="nav_services" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">Services</a>
+            <a href="#about" data-i18n="nav_about" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">About Us</a>
+            <a href="#contact" data-i18n="nav_contact" class="block text-base text-slate-300 hover:text-brand-cyan py-2">Contact</a>
+            <div class="flex items-center space-x-4 pt-2 border-t border-slate-900">
+                <button onclick="switchLanguage('en')" class="text-xs font-mono px-3 py-1.5 bg-slate-900 rounded text-brand-cyan border border-brand-cyan/20">EN</button>
+                <button onclick="switchLanguage('ro')" class="text-xs font-mono px-3 py-1.5 bg-slate-900 rounded text-slate-400">RO</button>
+            </div>
         </div>
     </header>
 
@@ -323,7 +342,7 @@
                 contact_name: "Full Name", contact_name_placeholder: "e.g. Alexander Wright", contact_email: "Email Address", contact_email_placeholder: "e.g. alex@bnetcore.ro",
                 contact_company: "Company Name", contact_company_placeholder: "e.g. Bnetcore Solutions SRL", contact_msg: "Your Project / Requirements", contact_msg_placeholder: "Describe hybrid environments, cluster migrations, or FortiGate requirements...",
                 contact_submit: "Send Engineering Request", contact_success: "Thank you! Our engineering team will contact you shortly.", footer_rights: "All rights reserved.",
-                js_sending: "Sending...", js_success_alert: "Success! Your message has been sent.", js_error_alert: "Something went wrong. Please try again."
+                js_sending: "Sending...", js_error_alert: "Something went wrong. Please try again."
             },
             ro: {
                 nav_home: "Acasă", nav_services: "Servicii", nav_about: "Despre Noi", nav_contact: "Contact", nav_cta: "Solicită Ofertă",
@@ -333,7 +352,7 @@
                 srv_2_title: "Rețele Avansate", srv_2_desc: "Rutare și comutare enterprise, implementări securizate de firewall-uri (FortiGate/Cisco), structuri VPN cu latență redusă și rețele izolate securizate.", srv_2_feat1: "Protecție Edge FortiGate / Cisco", srv_2_feat2: "VLAN și VPN de Latență Redusă",
                 srv_3_title: "Virtualizare și Soluții Hibride", srv_3_desc: "Clustere enterprise Proxmox VE, migrări VMware fără timp de nefuncționare, stocare hiperconvergentă (ZFS, TrueNAS) și sisteme native pentru containere.", srv_3_feat1: "Clustere Proxmox și ZFS", srv_3_feat2: "Sisteme Kubernetes și Docker",
                 srv_4_title: "Servicii IT Administrate și DevOps", srv_4_desc: "Monitorizare proactivă continuă, cicluri de viață de backup validate, fluxuri CI/CD securizate și răspuns tehnic din partea inginerilor noștri 24/7.", srv_4_feat1: "Planuri Automate de Backup & DR", srv_4_feat2: "Ingineria Fluxurilor CI/CD",
-                about_badge: "Cine Suntem", about_title: "Inginerie fără Compromisuri", about_text_1: "Fondată de ingineri de infrastructură cu experiență, BNETCORE a fost construită pe o premisă simplă: sistemele enterprise trebuie să fie robuste, transparente și complet sub controlul tău. Nu credem în platforme de tip cutie neagră, restrictive sau blocate.", about_text_2: "În schimb, proiectăm la comandă medii sigure pe servere fizice (bare-metal) sau cloud-uri hibride. Tot ceea cu configurăm este construit strict în conformitate cu specificațiile oficiale ale producătorilor și cu bunele practici globale.",
+                about_badge: "Cine Suntem", about_title: "Inginerie fără Compromisuri", about_text_1: "Fondată de ingineri de infrastructură cu expertiență, BNETCORE a fost construită pe o premisă simplă: sistemele enterprise trebuie să fie robuste, transparente și complet sub controlul tău. Nu credem în platforme de tip cutie neagră, restrictive sau blocate.", about_text_2: "În schimb, proiectăm la comandă medii sigure pe servere fizice (bare-metal) sau cloud-uri hibride. Tot ceea cu configurăm este construit strict în conformitate cu specificațiile oficiale ale producătorilor și cu bunele practici globale.",
                 about_philosophy_title: "Filozofia Noastră de Inginerie",
                 phil_1_title: "Profunzime Tehnică", phil_1_desc: "Analizăm în detaliu kernelurile sistemelor de operare, politicile de rutare și reglarea hardware-ului, în loc să ne bazăm pe procese automate.",
                 phil_2_title: "Flexibilitate Open-Source", phil_2_desc: "Promovăm arhitecturi deschise și robuste, precum Proxmox VE, ZFS și hibrizi Debian/RHEL, eliminând licențele software inutile.",
@@ -343,7 +362,7 @@
                 contact_name: "Nume Complet", contact_name_placeholder: "ex. Alexandru Popescu", contact_email: "Adresă Email", contact_email_placeholder: "ex. alex@bnetcore.ro",
                 contact_company: "Numele Companiei", contact_company_placeholder: "ex. Bnetcore Solutions SRL", contact_msg: "Cerințele Proiectului / Infrastructurii Tale", contact_msg_placeholder: "Descrie mediul hibrid, migrarea de clustere sau cerințele de FortiGate...",
                 contact_submit: "Trimite Solicitarea", contact_success: "Mulțumim! Echipa noastră de inginerie te va contacta în curând.", footer_rights: "Toate drepturile rezervate.",
-                js_sending: "Se trimite...", js_success_alert: "Succes! Mesajul tău a fost trimis.", js_error_alert: "Ceva nu a funcționat corect. Te rugăm să încerci din nou."
+                js_sending: "Se trimite...", js_error_alert: "Ceva nu a funcționat corect. Te rugăm să încerci din nou."
             }
         };
 
@@ -378,6 +397,23 @@
             switchLanguage(storedLang);
         });
 
+        // Hamburger Menu Mobile Controller
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            menuIcon.setAttribute('d', isHidden ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            });
+        });
+
         // Fixed Offset Header Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -394,25 +430,24 @@
             });
         });
 
-        // INTEGRATED ASYNC SUBMISSION ENGINE (WEB3FORMS + BILINGUAL MAPS)
-        const contactForm = document.getElementById('contact-form');
+        // OPTIMIZED BNETCORE FORM CONTROLLER UNIFIED WITH YOUR BASH/JS LOGIC
+        const form = document.getElementById('contact-form');
         const formSuccess = document.getElementById('form-success');
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const submitBtn = form.querySelector('button[type="submit"]');
 
-        contactForm.addEventListener('submit', async (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const currentLang = localStorage.getItem('bnetcore-lang') || 'en';
-            const formData = new FormData(contactForm);
+            const formData = new FormData(form);
             
-            // Append infrastructure security variables dynamically
+            // Append deployment parameters
             formData.append("access_key", "57c21282-1c66-4277-bfee-4fa31a5cb81b");
             formData.append("subject", "New Engineering Request from Bnetcore Web Platform");
             formData.append("from_name", "Bnetcore Solutions Operations");
 
             const originalText = submitBtn.textContent;
 
-            // Apply locked state to prevent pipeline race-conditions
             submitBtn.textContent = translations[currentLang]['js_sending'];
             submitBtn.disabled = true;
 
@@ -424,27 +459,24 @@
 
                 const data = await response.json();
 
-                if (response.ok) {
-                    // Trigger visual overlay confirmation block
+                if (response.ok && data.success) {
                     formSuccess.classList.remove('hidden');
                     formSuccess.classList.add('flex');
-                    contactForm.reset();
+                    form.reset();
                     
-                    // Reset overlay block after 5s
                     setTimeout(() => {
                         formSuccess.classList.add('hidden');
                         formSuccess.classList.remove('flex');
                     }, 5000);
                 } else {
-                    alert("Error: " + data.message);
+                    alert("Error: " + (data.message || "Invalid Token Context"));
                 }
 
             } catch (error) {
                 alert(translations[currentLang]['js_error_alert']);
             } finally {
-                // Restore interactive state
-                switchLanguage(currentLang); // Forces the exact language translation string back to button
                 submitBtn.disabled = false;
+                switchLanguage(currentLang); 
             }
         });
     </script>
