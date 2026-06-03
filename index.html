@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BNETCORE | Enterprise IT Infrastructure & Systems Engineering</title>
+    <meta name="description" content="Professional IT systems engineering, enterprise network security, virtualization, Proxmox VE clustering, and advanced systems automation by Bnetcore Solutions.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            deep: '#060814',
+                            card: '#0b0f19',
+                            cyan: '#00f0ff',
+                            orange: '#f97316',
+                            border: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #060814;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        /* Grid Overlay Background */
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(30, 41, 59, 0.2) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(30, 41, 59, 0.2) 1px, transparent 1px);
+        }
+        /* Custom Globe Orbit Animation */
+        .globe-container {
+            perspective: 1000px;
+        }
+        .orbit-ring {
+            transform-style: preserve-3d;
+            transform: rotateX(72deg) rotateY(-15deg);
+        }
+        .orbit-ring-reverse {
+            transform-style: preserve-3d;
+            transform: rotateX(60deg) rotateY(25deg);
+        }
+        @keyframes rotate-orbit {
+            0% { transform: rotateX(72deg) rotateY(-15deg) rotateZ(0deg); }
+            100% { transform: rotateX(72deg) rotateY(-15deg) rotateZ(360deg); }
+        }
+        @keyframes rotate-orbit-reverse {
+            0% { transform: rotateX(60deg) rotateY(25deg) rotateZ(360deg); }
+            100% { transform: rotateX(60deg) rotateY(25deg) rotateZ(0deg); }
+        }
+        .animate-orbit {
+            animation: rotate-orbit 16s linear infinite;
+        }
+        .animate-orbit-reverse {
+            animation: rotate-orbit-reverse 20s linear infinite;
+        }
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060814;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }
+    </style>
+</head>
+<body class="text-slate-100 antialiased selection:bg-brand-cyan/30 selection:text-white">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-cyan focus:text-brand-deep focus:rounded focus:font-mono focus:text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">
+        Skip to Main Content / Saltă la Conținut
+    </a>
+
+    <div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bg-gradient-to-b from-transparent via-brand-deep to-brand-deep pointer-events-none z-0"></div>
+
+    <header class="sticky top-0 z-50 w-full border-b border-slate-800 bg-brand-deep/85 backdrop-blur-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
+            
+            <span class="absolute top-0 left-0 text-slate-700 font-mono text-[9px] select-none pointer-events-none">[NET-A]</span>
+            <span class="absolute bottom-0 right-0 text-slate-700 font-mono text-[9px] select-none pointer-events-none">[PORT-80]</span>
+
+            <a href="#home" class="flex items-center space-x-3 group relative z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan focus-visible:rounded" aria-label="BNETCORE Home">
+                <div class="relative w-8 h-8 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-brand-cyan/20 rounded-lg blur group-hover:bg-brand-cyan/30 transition duration-300"></div>
+                    <svg class="w-7 h-7 text-brand-cyan relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 002 2h3m-1 8h1a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 0V4a2 2 0 00-2-2h-3a2 2 0 00-2 2v3m0 0H5a2 2 0 00-2 2v3a2 2 0 002 2h1" />
+                        <circle cx="12" cy="13" r="4" class="stroke-brand-orange" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-mono text-xl font-bold tracking-wider text-white">BNET<span class="text-brand-cyan">CORE</span></span>
+                    <span class="text-[9px] font-mono tracking-widest text-slate-500 uppercase -mt-1.5">Solutions</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex space-x-8 text-sm font-medium" aria-label="Main Navigation">
+                <a href="#home" data-i18n="nav_home" class="text-slate-300 hover:text-brand-cyan hover:underline hover:underline-offset-8 transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan focus-visible:rounded px-1">Home</a>
+                <a href="#services" data-i18n="nav_services" class="text-slate-300 hover:text-brand-cyan hover:underline hover:underline-offset-8 transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan focus-visible:rounded px-1">Services</a>
+                <a href="#about" data-i18n="nav_about" class="text-slate-300 hover:text-brand-cyan hover:underline hover:underline-offset-8 transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan focus-visible:rounded px-1">About Us</a>
+                <a href="#contact" data-i18n="nav_contact" class="text-slate-300 hover:text-brand-cyan hover:underline hover:underline-offset-8 transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan focus-visible:rounded px-1">Contact</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-6 relative z-10">
+                <div class="flex items-center space-x-2 bg-slate-900/80 border border-slate-800 p-1 rounded-md text-xs font-mono">
+                    <button onclick="switchLanguage('en')" class="lang-btn-en px-2 py-1 rounded transition-all duration-200 text-brand-cyan border border-brand-cyan/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan" aria-label="Switch to English">EN</button>
+                    <span class="text-slate-700" aria-hidden="true">|</span>
+                    <button onclick="switchLanguage('ro')" class="lang-btn-ro px-2 py-1 rounded transition-all duration-200 text-slate-400 border border-transparent hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan" aria-label="Comută pe Română">RO</button>
+                </div>
+
+                <a href="#contact" data-i18n="nav_cta" class="relative group px-5 py-2.5 bg-slate-950 border border-slate-800 rounded-md text-xs font-mono tracking-wider hover:border-brand-cyan transition duration-300 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">
+                    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-brand-cyan/10 to-brand-orange/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    <span class="relative text-white group-hover:text-brand-cyan transition-colors duration-300">Get a Quote</span>
+                </a>
+            </div>
+
+            <div class="flex md:hidden items-center space-x-3">
+                <div class="flex items-center space-x-1 bg-slate-900/60 border border-slate-800 px-2 py-1 rounded text-xs font-mono">
+                    <button onclick="switchLanguage('en')" class="lang-btn-en text-brand-cyan px-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-cyan" aria-label="Switch to English">EN</button>
+                    <span class="text-slate-700" aria-hidden="true">/</span>
+                    <button onclick="switchLanguage('ro')" class="lang-btn-ro text-slate-400 px-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-cyan" aria-label="Comută pe Română">RO</button>
+                </div>
+                <button id="mobile-menu-btn" class="text-slate-300 hover:text-brand-cyan focus:outline-none p-2 focus-visible:ring-2 focus-visible:ring-brand-cyan" aria-expanded="false" aria-label="Toggle navigation menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-brand-deep/95 backdrop-blur-lg px-4 pt-4 pb-6 space-y-4">
+            <a href="#home" data-i18n="nav_home" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">Home</a>
+            <a href="#services" data-i18n="nav_services" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">Services</a>
+            <a href="#about" data-i18n="nav_about" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">About Us</a>
+            <a href="#contact" data-i18n="nav_contact" class="block text-base text-slate-300 hover:text-brand-cyan py-2">Contact</a>
+            <a href="#contact" data-i18n="nav_cta" class="block w-full text-center py-3 bg-brand-cyan/10 hover:bg-brand-cyan/20 text-brand-cyan rounded-md font-mono text-sm border border-brand-cyan/30">Get a Quote</a>
+        </div>
+    </header>
+
+    <main id="main-content" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-l border-r border-slate-900/60">
+
+        <section id="home" class="relative pt-12 pb-20 md:py-24 flex flex-col lg:flex-row items-center gap-12 border-b border-slate-900 scroll-mt-20">
+            <span class="absolute -top-1.5 -left-1.5 text-slate-700 font-mono text-xs select-none">+</span>
+            <span class="absolute -top-1.5 -right-1.5 text-slate-700 font-mono text-xs select-none">+</span>
+            <span class="absolute -bottom-1.5 -left-1.5 text-slate-700 font-mono text-xs select-none">+</span>
+            <span class="absolute -bottom-1.5 -right-1.5 text-slate-700 font-mono text-xs select-none">+</span>
+
+            <div class="flex-1 space-y-6 max-w-2xl text-left z-10">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 bg-slate-950/80 border border-slate-800 rounded-full text-xs font-mono">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-cyan"></span>
+                    </span>
+                    <span data-i18n="hero_badge" class="text-slate-400">Enterprise Infrastructure Specialists</span>
+                </div>
+
+                <h1 data-i18n="hero_title" class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-none">
+                    Enterprise-Grade IT Infrastructure & Systems Engineering
+                </h1>
+
+                <p data-i18n="hero_subtitle" class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-xl">
+                    We design, secure, and scale resilient IT environments. From robust virtualization to advanced networking, Bnetcore Solutions keeps your business moving forward.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#services" data-i18n="hero_cta_primary" class="px-8 py-4 bg-gradient-to-r from-brand-cyan/20 to-brand-cyan/5 border border-brand-cyan/60 hover:border-brand-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.2)] text-brand-cyan text-sm font-mono tracking-wider rounded-md text-center transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">
+                        Our Services
+                    </a>
+                    <a href="#contact" data-i18n="hero_cta_secondary" class="px-8 py-4 bg-slate-950 border border-slate-800 hover:border-slate-600 text-slate-300 hover:text-white text-sm font-mono tracking-wider rounded-md text-center transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex-1 w-full flex items-center justify-center lg:justify-end relative z-0">
+                <div class="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center globe-container">
+                    
+                    <div class="absolute inset-0 bg-slate-900/30 rounded-full border border-slate-800/50 backdrop-blur-sm"></div>
+
+                    <svg class="w-36 h-36 sm:w-44 sm:h-44 text-slate-800 animate-pulse opacity-40" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5" aria-hidden="true">
+                        <circle cx="50" cy="50" r="45" />
+                        <ellipse cx="50" cy="50" rx="45" ry="15" />
+                        <ellipse cx="50" cy="50" rx="45" ry="30" />
+                        <ellipse cx="50" cy="50" rx="15" ry="45" />
+                        <ellipse cx="50" cy="50" rx="30" ry="45" />
+                        <path d="M50 5v90M5 50h90" />
+                    </svg>
+
+                    <div class="absolute w-52 h-52 sm:w-60 sm:h-60 border border-dashed border-brand-cyan/60 rounded-full orbit-ring animate-orbit flex items-center justify-center">
+                        <div class="absolute w-2.5 h-2.5 bg-brand-cyan rounded-full shadow-[0_0_15px_#00f0ff] -top-1.5"></div>
+                        <div class="absolute w-2 h-2 bg-brand-cyan rounded-full -bottom-1"></div>
+                    </div>
+
+                    <div class="absolute w-44 h-44 sm:w-52 sm:h-52 border border-brand-orange/40 rounded-full orbit-ring-reverse animate-orbit-reverse flex items-center justify-center">
+                        <div class="absolute w-4 h-2 bg-brand-orange rounded shadow-[0_0_15px_#f97316] -top-1 font-mono text-[5px] text-white flex items-center justify-center px-0.5">RJ45</div>
+                        <div class="absolute w-2 h-2 bg-slate-600 rounded-full -bottom-1"></div>
+                    </div>
+
+                    <div class="absolute -top-2 -left-2 bg-slate-950/80 border border-slate-800 px-2 py-1 rounded text-[9px] font-mono text-brand-cyan shadow-lg select-none">
+                        IP_FORWARD: 1
+                    </div>
+                    <div class="absolute bottom-6 -right-2 bg-slate-950/80 border border-slate-800 px-2 py-1 rounded text-[9px] font-mono text-brand-orange shadow-lg select-none">
+                        VLAN_ID: 100
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="relative py-20 md:py-28 border-b border-slate-900 scroll-mt-20">
+            <span class="absolute -bottom-1.5 -left-1.5 text-slate-700 font-mono text-xs select-none">+</span>
+            <span class="absolute -bottom-1.5 -right-1.5 text-slate-700 font-mono text-xs select-none">+</span>
+
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div class="inline-block px-3 py-1 bg-slate-950 border border-slate-800 rounded text-xs font-mono text-brand-cyan uppercase tracking-widest" data-i18n="services_badge">
+                    What We Do Best
+                </div>
+                <h2 data-i18n="services_title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    High-Performance Engineering Services
+                </h2>
+                <p data-i18n="services_desc" class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                    We build systems with high availability, modern automation, and robust enterprise-grade security protocols.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-brand-card/60 border border-slate-800 hover:border-brand-cyan/50 p-8 rounded-lg relative group transition-all duration-300 flex flex-col justify-between">
+                    <span class="absolute top-4 right-4 text-slate-700 font-mono text-[10px] select-none">[SYS-SRV-01]</span>
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 bg-slate-950 border border-slate-800 flex items-center justify-center rounded text-brand-cyan group-hover:border-brand-cyan transition duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="srv_1_title" class="text-xl font-bold text-white group-hover:text-brand-cyan transition duration-200">Infrastructure & Systems Administration</h3>
+                        <p data-i18n="srv_1_desc" class="text-slate-400 text-sm leading-relaxed">
+                            Linux/Windows Server Hybrid environments engineered for maximum reliability, using configuration management and infrastructure-as-code automation.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-6 font-mono text-[10px] text-slate-500">
+                        <span data-i18n="srv_1_feat1" class="bg-slate-950 border border-slate-800 px-2 py-1 rounded">Hybrid OS Architectures</span>
+                        <span data-i18n="srv_1_feat2" class="bg-slate-950 border border-slate-800 px-2 py-1 rounded">Automated Orchestration</span>
+                    </div>
+                </div>
+
+                <div class="bg-brand-card/60 border border-slate-800 hover:border-brand-cyan/50 p-8 rounded-lg relative group transition-all duration-300 flex flex-col justify-between">
+                    <span class="absolute top-4 right-4 text-slate-700 font-mono text-[10px] select-none">[SYS-SRV-02]</span>
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 bg-slate-950 border border-slate-800 flex items-center justify-center rounded text-brand-cyan group-hover:border-brand-cyan transition duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 009 11V7a4 4 0 00-8 0v4c0 1.956.402 3.82 1.128 5.517m11.305 1.12c.193.13.346.326.43.553l1.12 3.024a1 1 0 001.874-.664l-1.12-3.024a1.7 1.7 0 00-1.025-1.026l-3.022-1.12a1 1 0 10-.666 1.875l3.024 1.12z"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="srv_2_title" class="text-xl font-bold text-white group-hover:text-brand-cyan transition duration-200">Advanced Networking</h3>
+                        <p data-i18n="srv_2_desc" class="text-slate-400 text-sm leading-relaxed">
+                            Enterprise routing, switching, secure firewall deployments (FortiGate/Cisco), low-latency VPN structures, and isolated multi-tenant secure network designs.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-6 font-mono text-[10px] text-slate-500">
+                        <span data-i18n="srv_2_feat1" class="bg-slate-950 border border-slate-800 px-2 py-1 rounded">FortiGate / Cisco Edge Protection</span>
+                        <span data-i18n="srv_2_feat2" class="bg-slate-950 border border-slate-800 px-2 py-1 rounded">Low-Latency VLAN & VPN</span>
+                    </div>
+                </div>
+
+                <div class="bg-brand-card/60 border border-slate-800 hover:border-brand-cyan/50 p-8 rounded-lg relative group transition-all duration-300 flex flex-col justify-between">
+                    <span class="absolute top-4 right-4 text-slate-700 font-mono text-[10px] select-none">[SYS-SRV-03]</span>
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 bg-slate-950 border border-slate-800 flex items-center justify-center rounded text-brand-cyan group-hover:border-brand-cyan transition duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="srv_3_title" class="text-xl font-bold text-white group-hover:text-brand-cyan transition duration-200">Virtualization & Cloud Hybrids</h3>
+                        <p data-i18n="srv_3_desc" class="text-slate-400 text-sm leading-relaxed">
+                            Proxmox VE enterprise clusters, zero-downtime VMware migrations, hyperconverged storage systems (ZFS, TrueNAS), and container native setups.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-6 font-mono text-[10px] text-slate-500">
+                        <span data-i18n="srv_3_feat1" class="bg-slate-950 border border-slate-800 px-2 py-1 rounded">Proxmox Clusters & ZFS</span>
+                        <span data-i18n="srv_3_feat2" class="bg-slate-950 border border-slate-800 px-2 py-1 rounded">Kubernetes & Docker Systems</span>
+                    </div>
+                </div>
+
+                <div class="bg-brand-card/60 border border-slate-800 hover:border-brand-cyan/50 p-8 rounded-lg relative group transition-all duration-300 flex flex-col justify-between">
+                    <span class="absolute top-4 right-4 text-slate-700 font-mono text-[10px] select-none">[SYS-SRV-04]</span>
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 bg-slate-950 border border-slate-800 flex items-center justify-center rounded text-brand-cyan group-hover:border-brand-cyan transition duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="srv_4_title" class="text-xl font-bold text-white group-hover:text-brand-cyan transition duration-200">Managed IT Services & DevOps</h3>
+                        <p data-i18n="srv_4_desc" class="text-slate-400 text-sm leading-relaxed">
+                            Continuous proactive monitoring, backup validation lifecycles, secure CI/CD pipelines, and 24/7 technical infrastructure engineering response.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-6 font-mono text-[10px] text-slate-500">
+                        <span data-i18n="srv_4_feat1" class="bg-slate-950 border border-slate-800 px-2 py-1 rounded">Automated Backup & DR Plans</span>
+                        <span data-i18n="srv_4_feat2" class="bg-slate-950 border border-slate-800 px-2 py-1 rounded">CI/CD Pipeline Engineering</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="relative py-20 md:py-28 border-b border-slate-900 scroll-mt-20">
+            <span class="absolute -bottom-1.5 -left-1.5 text-slate-700 font-mono text-xs select-none">+</span>
+            <span class="absolute -bottom-1.5 -right-1.5 text-slate-700 font-mono text-xs select-none">+</span>
+
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="flex-1 space-y-6">
+                    <div class="inline-block px-3 py-1 bg-slate-950 border border-slate-800 rounded text-xs font-mono text-brand-cyan uppercase tracking-widest" data-i18n="about_badge">
+                        Who We Are
+                    </div>
+                    <h2 data-i18n="about_title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                        We Engineer Without Compromises
+                    </h2>
+                    <p data-i18n="about_text_1" class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        Founded by seasoned infrastructure engineers, BNETCORE was built on a simple premise: enterprise systems should be robust, transparent, and completely under your control. We do not believe in surface-level, restrictive, or locked-down black-box platforms.
+                    </p>
+                    <p data-i18n="about_text_2" class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        Instead, we custom-engineer open, highly scalable, and secure bare-metal or hybrid cloud environments. Everything we configure is engineered strictly according to official manufacturer specifications and global industry best practices.
+                    </p>
+                </div>
+
+                <div class="flex-1 w-full max-w-lg lg:max-w-none">
+                    <div class="bg-[#0b0f19] border border-slate-800 rounded-lg overflow-hidden font-mono text-xs text-slate-300 shadow-2xl">
+                        <div class="bg-[#121824] px-4 py-2 border-b border-slate-800 flex justify-between items-center select-none">
+                            <div class="flex space-x-1.5">
+                                <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                            </div>
+                            <span class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold">bnetcore-sysctl.sh</span>
+                        </div>
+                        <div class="p-5 space-y-3 min-h-[250px] leading-relaxed">
+                            <div><span class="text-brand-cyan">guest@bnetcore-ops:~$</span> <span class="text-white">curl -s https://api.bnetcore.ro/v1/health | jq</span></div>
+                            <div class="text-slate-400">
+                                {<br>
+                                &nbsp;&nbsp;"status": <span class="text-emerald-400">"active"</span>,<br>
+                                &nbsp;&nbsp;"uptime": "345d 11h 22m",<br>
+                                &nbsp;&nbsp;"services": {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"proxmox_clusters": <span class="text-emerald-400">"operational"</span>,<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"edge_firewalls_fortigate": <span class="text-emerald-400">"secured"</span>,<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"hybrid_storage_zfs": <span class="text-emerald-400">"healthy"</span><br>
+                                &nbsp;&nbsp;}<br>
+                                }
+                            </div>
+                            <div><span class="text-brand-cyan">guest@bnetcore-ops:~$</span> <span class="text-brand-orange">tail -f /var/log/bnetcore/deployment.log</span></div>
+                            <div class="text-slate-500 text-[10px] select-none">
+                                [2026-06-03 14:22:01] INFO [NET] Core route configuration loaded (Cisco Edge/VLAN 100)<br>
+                                [2026-06-03 14:22:02] INFO [SYS] Proxmox cluster nodes heartbeat verified - latency 0.4ms<br>
+                                [2026-06-03 14:22:03] SUCCESS [SEC] FortiGate secure VPN endpoints synced successfully<br>
+                                <span class="inline-block w-2 h-4 bg-brand-cyan animate-pulse align-middle"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-24 pt-16 border-t border-slate-900">
+                <h3 data-i18n="about_philosophy_title" class="text-2xl font-bold text-center text-white mb-12">
+                    Our Engineering Philosophy
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-6 bg-slate-950/40 border border-slate-900 rounded space-y-3">
+                        <div class="text-brand-cyan font-mono text-xs">[01]</div>
+                        <h4 data-i18n="phil_1_title" class="text-base font-bold text-white">Technical Depth</h4>
+                        <p data-i18n="phil_1_desc" class="text-slate-400 text-xs leading-relaxed">
+                            We dive deep into system kernels, routing policies, and hardware performance tuning rather than relying on automated wizards.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-slate-950/40 border border-slate-900 rounded space-y-3">
+                        <div class="text-brand-cyan font-mono text-xs">[02]</div>
+                        <h4 data-i18n="phil_2_title" class="text-base font-bold text-white">Open-Source Flexibility</h4>
+                        <p data-i18n="phil_2_desc" class="text-slate-400 text-xs leading-relaxed">
+                            We champion robust, open architectures like Proxmox VE, ZFS, and Debian/RHEL hybrids, avoiding unnecessary software licenses.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-slate-950/40 border border-slate-900 rounded space-y-3">
+                        <div class="text-brand-cyan font-mono text-xs">[03]</div>
+                        <h4 data-i18n="phil_3_title" class="text-base font-bold text-white">No Vendor Lock-In</h4>
+                        <p data-i18n="phil_3_desc" class="text-slate-400 text-xs leading-relaxed">
+                            You own your configurations, documentation, and hardware. We build systems that are yours to run, scale, and access completely.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-slate-950/40 border border-slate-900 rounded space-y-3">
+                        <div class="text-brand-cyan font-mono text-xs">[04]</div>
+                        <h4 data-i18n="phil_4_title" class="text-base font-bold text-white">Absolute System Safety</h4>
+                        <p data-i18n="phil_4_desc" class="text-slate-400 text-xs leading-relaxed">
+                            Hardened security defaults, multi-layered air-gapped backup policies, and resilient failovers are built in at the foundation layer.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="relative py-20 md:py-28 scroll-mt-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <div class="lg:col-span-5 space-y-6 flex flex-col justify-between h-full">
+                    <div class="space-y-6">
+                        <div class="inline-block px-3 py-1 bg-slate-950 border border-slate-800 rounded text-xs font-mono text-brand-cyan uppercase tracking-widest" data-i18n="contact_badge">
+                            Get in Touch
+                        </div>
+                        <h2 data-i18n="contact_title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-none">
+                            Let's Architect Your Next Infrastructure
+                        </h2>
+                        <p data-i18n="contact_desc" class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                            Have a complex migration or scaling challenge? Reach out directly, and our lead systems engineer will get back to you.
+                        </p>
+                    </div>
+
+                    <div class="pt-8 space-y-4 text-xs font-mono text-slate-300">
+                        <div class="flex items-center space-x-3 p-4 bg-slate-950/60 border border-slate-850 rounded hover:border-brand-cyan/40 transition duration-300">
+                            <svg class="w-4 h-4 text-brand-cyan flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <a href="mailto:office@bnetcore.ro" class="hover:text-brand-cyan transition focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-cyan">office@bnetcore.ro</a>
+                        </div>
+                        <div class="flex items-center space-x-3 p-4 bg-slate-950/60 border border-slate-850 rounded hover:border-brand-orange/40 transition duration-300">
+                            <svg class="w-4 h-4 text-brand-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>Bucharest, Romania</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-brand-card/40 border border-slate-800 p-8 rounded-lg relative">
+                    <span class="absolute top-4 right-4 text-slate-700 font-mono text-[9px] select-none pointer-events-none">[SSL-ACTIVE]</span>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label id="label-name" for="form-name" class="block text-xs font-mono uppercase tracking-wider text-slate-300" data-i18n="contact_name">Full Name</label>
+                                <input type="text" id="form-name" required data-i18n="contact_name_placeholder" aria-labelledby="label-name" class="w-full bg-slate-950/80 border border-slate-800 focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan text-slate-100 px-4 py-3 rounded text-sm outline-none transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">
+                            </div>
+                            <div class="space-y-2">
+                                <label id="label-email" for="form-email" class="block text-xs font-mono uppercase tracking-wider text-slate-300" data-i18n="contact_email">Email Address</label>
+                                <input type="email" id="form-email" required data-i18n="contact_email_placeholder" aria-labelledby="label-email" class="w-full bg-slate-950/80 border border-slate-800 focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan text-slate-100 px-4 py-3 rounded text-sm outline-none transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label id="label-company" for="form-company" class="block text-xs font-mono uppercase tracking-wider text-slate-300" data-i18n="contact_company">Company Name</label>
+                            <input type="text" id="form-company" data-i18n="contact_company_placeholder" aria-labelledby="label-company" class="w-full bg-slate-950/80 border border-slate-800 focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan text-slate-100 px-4 py-3 rounded text-sm outline-none transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label id="label-message" for="form-message" class="block text-xs font-mono uppercase tracking-wider text-slate-300" data-i18n="contact_msg">Your Project / Infrastructure Requirements</label>
+                            <textarea id="form-message" required data-i18n="contact_msg_placeholder" aria-labelledby="label-message" rows="5" class="w-full bg-slate-950/80 border border-slate-800 focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan text-slate-100 p-4 rounded text-sm outline-none transition duration-200 resize-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-brand-cyan/10 hover:bg-brand-cyan/20 border border-brand-cyan/40 hover:border-brand-cyan text-brand-cyan font-mono text-xs uppercase tracking-widest rounded transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan">
+                            <span data-i18n="contact_submit">Send Engineering Request</span>
+                        </button>
+                    </form>
+
+                    <div id="form-success" class="hidden absolute inset-0 bg-brand-card flex flex-col items-center justify-center text-center p-8 rounded-lg space-y-4">
+                        <div class="w-16 h-16 bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <p data-i18n="contact_success" class="text-sm font-mono text-slate-200 max-w-sm">
+                            Thank you! Our engineering team will contact you shortly.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="relative z-10 border-t border-slate-900 bg-slate-950/85 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500 font-mono">
+            <div class="flex items-center space-x-3">
+                <span class="font-bold tracking-wider text-white">BNET<span class="text-brand-cyan">CORE</span></span>
+                <span class="text-slate-700" aria-hidden="true">|</span>
+                <span data-i18n="footer_desc" class="hidden lg:inline text-slate-500">Enterprise IT Systems Engineering, Virtualization, and Advanced Network Security Architectures.</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span>&copy; <span id="current-year">2026</span> BNETCORE.</span>
+                <span data-i18n="footer_rights">All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                nav_home: "Home",
+                nav_about: "About Us",
+                nav_services: "Services",
+                nav_contact: "Contact",
+                nav_cta: "Get a Quote",
+                hero_badge: "Enterprise Infrastructure Specialists",
+                hero_title: "Enterprise-Grade IT Infrastructure & Systems Engineering",
+                hero_subtitle: "We design, secure, and scale resilient IT environments. From robust virtualization to advanced networking, Bnetcore Solutions keeps your business moving forward.",
+                hero_cta_primary: "Our Services",
+                hero_cta_secondary: "Contact Us",
+                services_badge: "What We Do Best",
+                services_title: "High-Performance Engineering Services",
+                services_desc: "We build systems with high availability, modern automation, and robust enterprise-grade security protocols.",
+                srv_1_title: "Infrastructure & Systems Administration",
+                srv_1_desc: "Linux/Windows Server Hybrid environments engineered for maximum reliability, using configuration management and infrastructure-as-code automation.",
+                srv_1_feat1: "Hybrid OS Architectures",
+                srv_1_feat2: "Automated Orchestration",
+                srv_2_title: "Advanced Networking",
+                srv_2_desc: "Enterprise routing, switching, secure firewall deployments (FortiGate/Cisco), low-latency VPN structures, and isolated multi-tenant secure network designs.",
+                srv_2_feat1: "FortiGate / Cisco Edge Protection",
+                srv_2_feat2: "Low-Latency VLAN & VPN",
+                srv_3_title: "Virtualization & Cloud Hybrids",
+                srv_3_desc: "Proxmox VE enterprise clusters, zero-downtime VMware migrations, hyperconverged storage systems (ZFS, TrueNAS), and container native setups.",
+                srv_3_feat1: "Proxmox Clusters & ZFS",
+                srv_3_feat2: "Kubernetes & Docker Systems",
+                srv_4_title: "Managed Services & DevOps",
+                srv_4_desc: "Continuous proactive monitoring, backup validation lifecycles, secure CI/CD pipelines, and 24/7 technical infrastructure engineering response.",
+                srv_4_feat1: "Automated Backup & DR Plans",
+                srv_4_feat2: "CI/CD Pipeline Engineering",
+                about_badge: "Who We Are",
+                about_title: "We Engineer Without Compromises",
+                about_text_1: "Founded by seasoned infrastructure engineers, BNETCORE was built on a simple premise: enterprise systems should be robust, transparent, and completely under your control. We do not believe in surface-level, restrictive, or locked-down black-box platforms.",
+                about_text_2: "Instead, we custom-engineer open, highly scalable, and secure bare-metal or hybrid cloud environments. Everything we configure is engineered strictly according to official manufacturer specifications and global industry best practices.",
+                about_philosophy_title: "Our Engineering Philosophy",
+                phil_1_title: "Technical Depth",
+                phil_1_desc: "We dive deep into system kernels, routing policies, and hardware performance tuning rather than relying on automated wizards.",
+                phil_2_title: "Open-Source Flexibility",
+                phil_2_desc: "We champion robust, open architectures like Proxmox VE, ZFS, and Debian/RHEL hybrids, avoiding unnecessary software licenses.",
+                phil_3_title: "No Vendor Lock-In",
+                phil_3_desc: "You own your configurations, documentation, and hardware. We build systems that are yours to run, scale, and access completely.",
+                phil_4_title: "Absolute System Safety",
+                phil_4_desc: "Hardened security defaults, multi-layered air-gapped backup policies, and resilient failovers are built in at the foundation layer.",
+                contact_badge: "Get in Touch",
+                contact_title: "Let's Architect Your Next Infrastructure",
+                contact_desc: "Have a complex migration or scaling challenge? Reach out directly, and our lead systems engineer will get back to you.",
+                contact_name: "Full Name",
+                contact_name_placeholder: "e.g. Alexander Wright",
+                contact_email: "Email Address",
+                contact_email_placeholder: "e.g. alex@bnetcore.ro",
+                contact_company: "Company Name",
+                contact_company_placeholder: "e.g. Bnetcore Solutions SRL",
+                contact_msg: "Your Project / Infrastructure Requirements",
+                contact_msg_placeholder: "Describe hybrid environments, cluster migrations, or FortiGate requirements...",
+                contact_submit: "Send Engineering Request",
+                contact_success: "Thank you! Our engineering team will contact you shortly.",
+                footer_rights: "All rights reserved.",
+                footer_desc: "Enterprise IT Systems Engineering, Virtualization, and Advanced Network Security Architectures."
+            },
+            ro: {
+                nav_home: "Acasă",
+                nav_about: "Despre Noi",
+                nav_services: "Servicii",
+                nav_contact: "Contact",
+                nav_cta: "Solicită Ofertă",
+                hero_badge: "Specialiști în Infrastructură Enterprise",
+                hero_title: "Infrastructură IT Enterprise și Inginerie de Sistem",
+                hero_subtitle: "Proiectăm, securizăm și scalăm medii IT reziliente. De la virtualizare robustă la rețele avansate, Bnetcore Solutions menține afacerea ta în mișcare.",
+                hero_cta_primary: "Serviciile Noastre",
+                hero_cta_secondary: "Contactează-ne",
+                services_badge: "Ce Facem Cel Mai Bine",
+                services_title: "Servicii de Inginerie de Înaltă Performanță",
+                services_desc: "Construim sisteme cu disponibilitate ridicată, automatizare modernă și protocoale robuste de securitate enterprise.",
+                srv_1_title: "Administrare Sisteme și Infrastructură",
+                srv_1_desc: "Medii hibride Linux/Windows Server proiectate pentru fiabilitate maximă, folosind managementul configurației și automatizarea infrastructurii ca cod (IaC).",
+                srv_1_feat1: "Arhitecturi OS Hibride",
+                srv_1_feat2: "Orchestrare Automatizată",
+                srv_2_title: "Rețele Avansate",
+                srv_2_desc: "Rutare și comutare enterprise, implementări securizate de firewall-uri (FortiGate/Cisco), structuri VPN cu latență redusă și rețele izolate securizate.",
+                srv_2_feat1: "Protecție Edge FortiGate / Cisco",
+                srv_2_feat2: "VLAN și VPN de Latență Redusă",
+                srv_3_title: "Virtualizare și Soluții Hibride",
+                srv_3_desc: "Clustere enterprise Proxmox VE, migrări VMware fără timp de nefuncționare, stocare hiperconvergentă (ZFS, TrueNAS) și sisteme native pentru containere.",
+                srv_3_feat1: "Clustere Proxmox și ZFS",
+                srv_3_feat2: "Sisteme Kubernetes și Docker",
+                srv_4_title: "Servicii IT Administrate și DevOps",
+                srv_4_desc: "Monitorizare proactivă continuă, cicluri de viață de backup validate, fluxuri CI/CD securizate și răspuns tehnic din partea inginerilor noștri 24/7.",
+                srv_4_feat1: "Planuri Automate de Backup & DR",
+                srv_4_feat2: "Ingineria Fluxurilor CI/CD",
+                about_badge: "Cine Suntem",
+                about_title: "Inginerie fără Compromisuri",
+                about_text_1: "Fondată de ingineri de infrastructură cu experiență, BNETCORE a fost construită pe o premisă simplă: sistemele enterprise trebuie să fie robuste, transparente și complet sub controlul tău. Nu credem în platforme de tip cutie neagră, restrictive sau blocate.",
+                about_text_2: "În schimb, proiectăm la comandă medii sigure pe servere fizice (bare-metal) sau cloud-uri hibride. Tot ceea cu configurăm este construit strict în conformitate cu specificațiile oficiale ale producătorilor și cu bunele practici globale.",
+                about_philosophy_title: "Filozofia Noastră de Inginerie",
+                phil_1_title: "Profunzime Tehnică",
+                phil_1_desc: "Analizăm în detaliu kernelurile sistemelor de operare, politicile de rutare și reglarea hardware-ului, în loc să ne bazăm pe procese automate.",
+                phil_2_title: "Flexibilitate Open-Source",
+                phil_2_desc: "Promovăm arhitecturi deschise și robuste, precum Proxmox VE, ZFS și hibrizi Debian/RHEL, eliminând licențele software inutile.",
+                phil_3_title: "Fără Dependență de Furnizor",
+                phil_3_desc: "Ești proprietarul complet al configurațiilor, documentației și echipamentelor. Construim sisteme pe care le poți gestiona și extinde singur.",
+                phil_4_title: "Siguranță Absolută a Sistemelor",
+                phil_4_desc: "Configurații de securitate implicite, politici de backup izolate fizic (air-gapped) și sisteme redundante automate integrate nativ.",
+                contact_badge: "Contactează-ne",
+                contact_title: "Hai să Planificăm Următoarea Ta Infrastructură",
+                contact_desc: "Ai o migrare complexă sau o provocare de scalare? Contactează-ne direct, iar inginerul nostru de sisteme principal îți va răspunde în cel mai scurt timp.",
+                contact_name: "Nume Complet",
+                contact_name_placeholder: "ex. Alexandru Popescu",
+                contact_email: "Adresă Email",
+                contact_email_placeholder: "ex. alex@bnetcore.ro",
+                contact_company: "Numele Companiei",
+                contact_company_placeholder: "ex. Bnetcore Solutions SRL",
+                contact_msg: "Cerințele Proiectului / Infrastructurii Tale",
+                contact_msg_placeholder: "Descrie mediul hibrid, migrarea de clustere sau cerințele de FortiGate...",
+                contact_submit: "Trimite Solicitarea",
+                contact_success: "Mulțumim! Echipa noastră de inginerie te va contacta în curând.",
+                footer_rights: "Toate drepturile rezervate.",
+                footer_desc: "Inginerie de Sisteme IT Enterprise, Virtualizare și Arhitecturi de Securitate de Rețea Avansate."
+            }
+        };
+
+        // Switch Language Runtime Handler (Translates Inner Content and Form Placeholders Dynamically)
+        function switchLanguage(lang) {
+            document.documentElement.lang = lang;
+            localStorage.setItem('bnetcore-lang', lang);
+            
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.setAttribute('placeholder', translations[lang][key]);
+                    } else {
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update Language Toggle Button States
+            const enBtns = document.querySelectorAll('.lang-btn-en');
+            const roBtns = document.querySelectorAll('.lang-btn-ro');
+            
+            if (lang === 'en') {
+                enBtns.forEach(btn => {
+                    btn.className = "lang-btn-en px-2 py-1 rounded transition-all duration-200 text-brand-cyan border border-brand-cyan/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan";
+                });
+                roBtns.forEach(btn => {
+                    btn.className = "lang-btn-ro px-2 py-1 rounded transition-all duration-200 text-slate-400 border border-transparent hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan";
+                });
+            } else {
+                roBtns.forEach(btn => {
+                    btn.className = "lang-btn-ro px-2 py-1 rounded transition-all duration-200 text-brand-cyan border border-brand-cyan/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan";
+                });
+                enBtns.forEach(btn => {
+                    btn.className = "lang-btn-en px-2 py-1 rounded transition-all duration-200 text-slate-400 border border-transparent hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan";
+                });
+            }
+        }
+
+        // Initialize Page Runtime Configuration
+        document.addEventListener('DOMContentLoaded', () => {
+            const storedLang = localStorage.getItem('bnetcore-lang') || 'en';
+            switchLanguage(storedLang);
+
+            // Set current footer year dynamically
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+
+        // Toggle Responsive Hamburger Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        // Close Mobile Menu on Navigating
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Smooth Scroll with Header Height Offset (80px)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetID = this.getAttribute('href');
+                if (targetID === '#') return;
+                const targetElement = document.querySelector(targetID);
+                if (targetElement) {
+                    const headerOffset = 80; // Compensates for the fixed header
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Contact Form Feedback Handler
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formSuccess.classList.remove('hidden');
+            formSuccess.classList.add('flex');
+            
+            setTimeout(() => {
+                contactForm.reset();
+                formSuccess.classList.add('hidden');
+                formSuccess.classList.remove('flex');
+            }, 6000); 
+        });
+    </script>
+</body>
+</html>
