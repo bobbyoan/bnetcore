@@ -1,0 +1,128 @@
+:root, [data-theme="dark"] {
+    --bg-deep: #060814;
+    --bg-card: #0b0f19;
+    --accent-cyan: #00f0ff;
+    --accent-orange: #f97316;
+    --border-color: #1e293b;
+    --heading-color: #ffffff;
+    --grid-line: rgba(30, 41, 59, 0.2);
+    --highlight-glow: rgba(0, 240, 255, 0.10);
+    --slate-100: #f1f5f9;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+    --slate-950: #020617;
+}
+
+[data-theme="light"] {
+    --bg-deep: #faf7f2;
+    --bg-card: #ffffff;
+    --accent-cyan: #0e7490;
+    --accent-orange: #ea580c;
+    --border-color: #e7e0d4;
+    --heading-color: #1c1a17;
+    --grid-line: rgba(120, 113, 108, 0.12);
+    --slate-100: #292524;
+    --slate-300: #44403c;
+    --slate-400: #6b6154;
+    --slate-500: #857a6b;
+    --slate-700: #d9d2c3;
+    --slate-800: #e7e0d4;
+    --slate-900: #f0ebe1;
+    --slate-950: #ffffff;
+    --highlight-glow: rgba(14, 116, 144, 0.10);
+}
+
+body {
+    background-color: var(--bg-deep);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.2s ease;
+}
+
+.grid-bg {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+.atom-container { perspective: 1000px; }
+.orbit-1 { transform-style: preserve-3d; transform: rotateX(65deg) rotateY(-30deg); }
+.orbit-2 { transform-style: preserve-3d; transform: rotateX(65deg) rotateY(30deg); }
+.orbit-3 { transform-style: preserve-3d; transform: rotateX(0deg) rotateY(75deg); }
+
+@keyframes rotate-z { 0% { transform: rotateZ(0deg); } 100% { transform: rotateZ(360deg); } }
+@keyframes rotate-z-reverse { 0% { transform: rotateZ(360deg); } 100% { transform: rotateZ(0deg); } }
+
+.animate-orbit-1 { animation: rotate-z 12s linear infinite; }
+.animate-orbit-2 { animation: rotate-z-reverse 16s linear infinite; }
+.animate-orbit-3 { animation: rotate-z 14s linear infinite; }
+
+/* Blog article body (post.html) — replaces the @tailwindcss/typography `prose` plugin,
+   which isn't available on the Tailwind CDN build. */
+.article-body h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--heading-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.article-body h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--heading-color);
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.article-body h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--heading-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.article-body p {
+    color: var(--slate-400);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+}
+
+.article-body ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    color: var(--slate-400);
+    margin-bottom: 1rem;
+}
+
+.article-body li { margin-bottom: 0.5rem; }
+
+.article-body pre {
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+}
+
+/* Brief highlight pulse used when the Contact CTA scrolls the Contact section into view. */
+@keyframes section-highlight-pulse {
+    0% { background-color: var(--highlight-glow); }
+    100% { background-color: transparent; }
+}
+
+.section-highlight {
+    animation: section-highlight-pulse 1.6s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .section-highlight { animation: none; }
+}

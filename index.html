@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="ro" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,10 +14,24 @@
     </script>
     <title>BNETCORE | Websites, Hosting & Photography for Small Businesses</title>
     <meta name="description" content="We design professional, mobile-friendly websites, host and maintain them on enterprise-grade infrastructure, and offer business photography — for small businesses, consultants, and EU-funding applicants.">
+
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+    <link rel="canonical" href="https://bnetcore.ro/">
+    <meta name="theme-color" content="#060814">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BNETCORE Solutions">
+    <meta property="og:title" content="BNETCORE | Websites, Hosting & Photography for Small Businesses">
+    <meta property="og:description" content="We design professional, mobile-friendly websites, host and maintain them on enterprise-grade infrastructure, and offer business photography — for small businesses, consultants, and EU-funding applicants.">
+    <meta property="og:url" content="https://bnetcore.ro/">
+    <meta name="twitter:card" content="summary">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="assets/styles/theme.css">
 
     <script>
         tailwind.config = {
@@ -52,57 +66,6 @@
             }
         }
     </script>
-    <style>
-        :root, [data-theme="dark"] {
-            --bg-deep: #060814;
-            --bg-card: #0b0f19;
-            --accent-cyan: #00f0ff;
-            --accent-orange: #f97316;
-            --border-color: #1e293b;
-            --heading-color: #ffffff;
-            --grid-line: rgba(30, 41, 59, 0.2);
-            --slate-100: #f1f5f9;
-            --slate-300: #cbd5e1;
-            --slate-400: #94a3b8;
-            --slate-500: #64748b;
-            --slate-700: #334155;
-            --slate-800: #1e293b;
-            --slate-900: #0f172a;
-            --slate-950: #020617;
-        }
-        [data-theme="light"] {
-            --bg-deep: #faf7f2;
-            --bg-card: #ffffff;
-            --accent-cyan: #0e7490;
-            --accent-orange: #ea580c;
-            --border-color: #e7e0d4;
-            --heading-color: #1c1a17;
-            --grid-line: rgba(120, 113, 108, 0.12);
-            --slate-100: #292524;
-            --slate-300: #44403c;
-            --slate-400: #6b6154;
-            --slate-500: #857a6b;
-            --slate-700: #d9d2c3;
-            --slate-800: #e7e0d4;
-            --slate-900: #f0ebe1;
-            --slate-950: #ffffff;
-        }
-        body { background-color: var(--bg-deep); font-family: 'Inter', sans-serif; overflow-x: hidden; transition: background-color 0.2s ease; }
-        .grid-bg {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-                              linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-        }
-        .atom-container { perspective: 1000px; }
-        .orbit-1 { transform-style: preserve-3d; transform: rotateX(65deg) rotateY(-30deg); }
-        .orbit-2 { transform-style: preserve-3d; transform: rotateX(65deg) rotateY(30deg); }
-        .orbit-3 { transform-style: preserve-3d; transform: rotateX(0deg) rotateY(75deg); }
-        @keyframes rotate-z { 0% { transform: rotateZ(0deg); } 100% { transform: rotateZ(360deg); } }
-        @keyframes rotate-z-reverse { 0% { transform: rotateZ(360deg); } 100% { transform: rotateZ(0deg); } }
-        .animate-orbit-1 { animation: rotate-z 12s linear infinite; }
-        .animate-orbit-2 { animation: rotate-z-reverse 16s linear infinite; }
-        .animate-orbit-3 { animation: rotate-z 14s linear infinite; }
-    </style>
 </head>
 <body class="text-slate-100 antialiased selection:bg-brand-cyan/30 selection:text-white">
 
@@ -111,13 +74,10 @@
 
     <header class="sticky top-0 z-50 w-full border-b border-slate-800 bg-brand-deep/85 backdrop-blur-md transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
-            <span class="absolute top-0 left-0 text-slate-700 font-mono text-[9px] select-none pointer-events-none">[STUDIO]</span>
-            <span class="absolute bottom-0 right-0 text-slate-700 font-mono text-[9px] select-none pointer-events-none">[EST. 2024]</span>
-
             <a href="#home" class="flex items-center space-x-3 group relative z-10 focus:outline-none">
                 <div class="relative w-8 h-8 flex items-center justify-center">
                     <div class="absolute inset-0 bg-brand-cyan/20 rounded-lg blur group-hover:bg-brand-cyan/30 transition duration-300"></div>
-                    <svg class="w-7 h-7 text-brand-cyan relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-7 h-7 text-brand-cyan relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 002 2h3m-1 8h1a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 0V4a2 2 0 00-2-2h-3a2 2 0 00-2 2v3m0 0H5a2 2 0 00-2 2v3a2 2 0 002 2h1" />
                         <circle cx="12" cy="13" r="4" class="stroke-brand-orange" stroke-width="2" />
                     </svg>
@@ -132,29 +92,45 @@
                 <a href="#home" data-i18n="nav_home" class="text-slate-300 hover:text-brand-cyan transition duration-200">Home</a>
                 <a href="#services" data-i18n="nav_services" class="text-slate-300 hover:text-brand-cyan transition duration-200">Services</a>
                 <a href="#about" data-i18n="nav_about" class="text-slate-300 hover:text-brand-cyan transition duration-200">About Us</a>
-                <a href="#portfolio" data-i18n="nav_portfolio" class="text-slate-300 hover:text-brand-cyan transition duration-200">Portfolio</a>
                 <a href="#contact" data-i18n="nav_contact" class="text-slate-300 hover:text-brand-cyan transition duration-200">Contact</a>
+                <!--
+                    Portfolio and Blog are hidden until real content exists (see the commented-out
+                    sections further down). Uncomment the links below, in their original position,
+                    when re-enabling either section:
+                <a href="#portfolio" data-i18n="nav_portfolio" class="text-slate-300 hover:text-brand-cyan transition duration-200">Portfolio</a>
+                <a href="#blog" data-i18n="nav_blog" class="text-slate-300 hover:text-brand-cyan transition duration-200">Blog</a>
+                -->
             </nav>
 
             <div class="hidden md:flex items-center space-x-4 relative z-10">
-                <div class="flex items-center space-x-1 bg-slate-900/80 border border-slate-800 p-1 rounded-md text-xs">
-                    <button onclick="setTheme('light')" data-theme-btn="light" class="theme-btn px-2 py-1 rounded transition" title="Light" aria-label="Light theme">☀️</button>
-                    <button onclick="setTheme('dark')" data-theme-btn="dark" class="theme-btn px-2 py-1 rounded transition" title="Dark" aria-label="Dark theme">🌙</button>
-                    <button onclick="setTheme('system')" data-theme-btn="system" class="theme-btn px-2 py-1 rounded transition" title="Auto" aria-label="System theme">🖥️</button>
+                <div class="relative" data-settings>
+                    <button type="button" class="settings-toggle h-10 w-10 flex items-center justify-center rounded-md bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-brand-cyan hover:border-brand-cyan/40 transition" aria-haspopup="true" aria-expanded="false" aria-label="Settings">
+                        <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                    </button>
+                    <div class="settings-panel hidden absolute right-0 top-full mt-2 w-56 bg-brand-card border border-slate-800 rounded-lg shadow-2xl p-4 space-y-4 z-50">
+                        <div>
+                            <p data-i18n="settings_language" class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Language</p>
+                            <div class="flex items-center space-x-2 bg-slate-900/80 border border-slate-800 p-1 rounded-md text-xs font-mono">
+                                <button onclick="switchLanguage('en')" class="lang-btn-en flex-1 px-2 py-1.5 rounded transition text-slate-400 border border-transparent hover:text-white">EN</button>
+                                <button onclick="switchLanguage('ro')" class="lang-btn-ro flex-1 px-2 py-1.5 rounded transition text-brand-cyan border border-brand-cyan/30">RO</button>
+                            </div>
+                        </div>
+                        <div>
+                            <p data-i18n="settings_theme" class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Theme</p>
+                            <div class="flex items-center space-x-1 bg-slate-900/80 border border-slate-800 p-1 rounded-md text-xs">
+                                <button onclick="setTheme('light')" data-theme-btn="light" class="theme-btn flex-1 px-2 py-1.5 rounded transition" title="Light" aria-label="Light theme"><i class="fa-solid fa-sun" aria-hidden="true"></i></button>
+                                <button onclick="setTheme('dark')" data-theme-btn="dark" class="theme-btn flex-1 px-2 py-1.5 rounded transition" title="Dark" aria-label="Dark theme"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+                                <button onclick="setTheme('system')" data-theme-btn="system" class="theme-btn flex-1 px-2 py-1.5 rounded transition" title="Auto" aria-label="System theme"><i class="fa-solid fa-display" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex items-center space-x-2 bg-slate-900/80 border border-slate-800 p-1 rounded-md text-xs font-mono">
-                    <button onclick="switchLanguage('en')" class="lang-btn-en px-2 py-1 rounded transition text-brand-cyan border border-brand-cyan/30">EN</button>
-                    <span class="text-slate-700">|</span>
-                    <button onclick="switchLanguage('ro')" class="lang-btn-ro px-2 py-1 rounded transition text-slate-400 border border-transparent hover:text-white">RO</button>
-                </div>
-                <a href="#contact" data-i18n="nav_cta" class="px-5 py-2.5 bg-slate-950 border border-slate-800 rounded-md text-xs font-mono tracking-wider text-white hover:border-brand-cyan transition duration-300">Get a Quote</a>
+                <a href="#contact" data-i18n="nav_cta" class="js-contact-cta h-10 px-5 flex items-center justify-center bg-slate-950 border border-slate-800 rounded-md text-xs font-mono tracking-wider text-white hover:border-brand-cyan transition duration-300">Contact Us</a>
             </div>
 
             <div class="flex md:hidden items-center space-x-3 relative z-20">
-                <button id="mobile-menu-btn" class="text-slate-300 hover:text-brand-cyan p-2 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
+                <button id="mobile-menu-btn" class="text-slate-300 hover:text-brand-cyan p-2 focus:outline-none" aria-label="Toggle navigation menu" aria-controls="mobile-menu">
+                    <i id="menu-icon" class="fa-solid fa-bars text-2xl" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
@@ -163,29 +139,48 @@
             <a href="#home" data-i18n="nav_home" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">Home</a>
             <a href="#services" data-i18n="nav_services" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">Services</a>
             <a href="#about" data-i18n="nav_about" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">About Us</a>
+            <!--
+                Portfolio and Blog are hidden until real content exists. Uncomment the links
+                below, in their original position, when re-enabling either section:
             <a href="#portfolio" data-i18n="nav_portfolio" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">Portfolio</a>
+            <a href="#blog" data-i18n="nav_blog" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">Blog</a>
+            -->
             <a href="#contact" data-i18n="nav_contact" class="block text-base text-slate-300 hover:text-brand-cyan py-2">Contact</a>
-            <div class="flex items-center space-x-4 pt-2 border-t border-slate-900">
-                <button onclick="switchLanguage('en')" class="text-xs font-mono px-3 py-1.5 bg-slate-900 rounded text-brand-cyan border border-brand-cyan/20">EN</button>
-                <button onclick="switchLanguage('ro')" class="text-xs font-mono px-3 py-1.5 bg-slate-900 rounded text-slate-400">RO</button>
-            </div>
-            <div class="flex items-center space-x-2 pt-2">
-                <button onclick="setTheme('light')" data-theme-btn="light" class="theme-btn text-sm px-3 py-1.5 bg-slate-900 rounded" title="Light" aria-label="Light theme">☀️</button>
-                <button onclick="setTheme('dark')" data-theme-btn="dark" class="theme-btn text-sm px-3 py-1.5 bg-slate-900 rounded" title="Dark" aria-label="Dark theme">🌙</button>
-                <button onclick="setTheme('system')" data-theme-btn="system" class="theme-btn text-sm px-3 py-1.5 bg-slate-900 rounded" title="Auto" aria-label="System theme">🖥️</button>
+            <div class="pt-2 border-t border-slate-900 relative" data-settings>
+                <button type="button" class="settings-toggle flex items-center gap-2 text-sm text-slate-300 hover:text-brand-cyan transition py-2 w-full" aria-haspopup="true" aria-expanded="false" aria-label="Settings">
+                    <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                    <span data-i18n="settings_label">Settings</span>
+                </button>
+                <div class="settings-panel hidden mt-2 w-full bg-slate-950/60 border border-slate-800 rounded-lg p-4 space-y-4">
+                    <div>
+                        <p data-i18n="settings_language" class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Language</p>
+                        <div class="flex items-center space-x-2 bg-slate-900 border border-slate-800 p-1 rounded-md text-xs font-mono">
+                            <button onclick="switchLanguage('en')" class="lang-btn-en flex-1 px-2 py-1.5 rounded transition text-slate-400 border border-transparent hover:text-white">EN</button>
+                            <button onclick="switchLanguage('ro')" class="lang-btn-ro flex-1 px-2 py-1.5 rounded transition text-brand-cyan border border-brand-cyan/30">RO</button>
+                        </div>
+                    </div>
+                    <div>
+                        <p data-i18n="settings_theme" class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Theme</p>
+                        <div class="flex items-center space-x-1 bg-slate-900 border border-slate-800 p-1 rounded-md text-xs">
+                            <button onclick="setTheme('light')" data-theme-btn="light" class="theme-btn flex-1 px-3 py-1.5 rounded" title="Light" aria-label="Light theme"><i class="fa-solid fa-sun" aria-hidden="true"></i></button>
+                            <button onclick="setTheme('dark')" data-theme-btn="dark" class="theme-btn flex-1 px-3 py-1.5 rounded" title="Dark" aria-label="Dark theme"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+                            <button onclick="setTheme('system')" data-theme-btn="system" class="theme-btn flex-1 px-3 py-1.5 rounded" title="Auto" aria-label="System theme"><i class="fa-solid fa-display" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-l border-r border-slate-900/60">
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <section id="home" class="relative pt-12 pb-20 md:py-24 flex flex-col lg:flex-row items-center gap-12 border-b border-slate-900 scroll-mt-20">
             <div class="flex-1 space-y-6 max-w-2xl text-left z-10">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 bg-slate-950/80 border border-slate-800 rounded-full text-xs font-mono">
                     <span data-i18n="hero_badge" class="text-slate-400">Websites for small businesses</span>
                 </div>
-                <h1 data-i18n="hero_title" class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-none">A professional website for your business — designed, hosted, and looked after.</h1>
-                <p data-i18n="hero_subtitle" class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-xl">I design clean, fast, mobile-friendly websites and host them on enterprise-grade infrastructure with real backups — so your business looks credible online and you never have to worry about the technical side.</p>
+                <h1 data-i18n="hero_title" class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-none">BNETCORE Solutions</h1>
+                <p data-i18n="hero_subtitle" class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-xl">A professional website for your business — designed, hosted, and looked after. I design clean, fast, mobile-friendly websites and host them on enterprise-grade infrastructure with real backups — so your business looks credible online and you never have to worry about the technical side.</p>
                 <div class="flex flex-col sm:flex-row gap-4 pt-4">
                     <a href="#contact" data-i18n="hero_cta_primary" class="px-8 py-4 bg-gradient-to-r from-brand-cyan/20 to-brand-cyan/5 border border-brand-cyan/60 text-brand-cyan text-sm font-mono tracking-wider rounded-md text-center transition">Get a Quote</a>
                     <a href="#services" data-i18n="hero_cta_secondary" class="px-8 py-4 bg-slate-950/60 border border-slate-700 text-slate-300 text-sm font-mono tracking-wider rounded-md text-center transition hover:border-brand-cyan/40">See What's Included</a>
@@ -195,15 +190,9 @@
             <div class="flex-1 w-full flex items-center justify-center lg:justify-end relative z-0">
                 <div class="relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center atom-container">
                     <div class="absolute w-48 h-48 bg-brand-cyan/5 rounded-full blur-2xl"></div>
-                    <svg class="absolute w-48 h-48 sm:w-52 sm:h-52 text-slate-800/40" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.4">
+                    <svg class="absolute w-48 h-48 sm:w-52 sm:h-52 text-slate-800/40" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.4" aria-hidden="true">
                         <circle cx="50" cy="50" r="45" /><ellipse cx="50" cy="50" rx="45" ry="15" /><ellipse cx="50" cy="50" rx="45" ry="30" /><ellipse cx="50" cy="50" rx="15" ry="45" /><ellipse cx="50" cy="50" rx="30" ry="45" /><path d="M50 5v90M5 50h90" />
                     </svg>
-                    <div class="absolute z-20 w-16 h-16 bg-slate-950 border-2 border-slate-800 rounded-md p-1.5 flex items-center justify-center shadow-[0_0_25px_rgba(0,240,255,0.15)]">
-                        <svg class="w-full h-full text-brand-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="5" y="5" width="14" height="14" rx="1" /><path d="M9 9h6v6H9zM9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4" stroke-linecap="round"/>
-                        </svg>
-                        <span class="absolute w-1.5 h-1.5 bg-brand-orange rounded-full animate-ping"></span>
-                    </div>
                     <div class="absolute w-60 h-60 border border-brand-cyan/30 rounded-full orbit-1 flex items-center justify-center">
                         <div class="w-full h-full relative animate-orbit-1"><div class="absolute w-2.5 h-2.5 bg-brand-cyan rounded-full shadow-[0_0_12px_#00f0ff] -top-1.25 left-1/2 -translate-x-1/2"></div></div>
                     </div>
@@ -228,6 +217,9 @@
                 <div class="bg-brand-card/60 border border-slate-800 p-8 rounded-lg relative flex flex-col justify-between">
                     <span class="absolute top-4 right-4 text-slate-700 font-mono text-[10px] select-none">[01]</span>
                     <div class="space-y-4">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan">
+                            <i class="fa-solid fa-laptop-code text-xl" aria-hidden="true"></i>
+                        </div>
                         <h3 data-i18n="srv_1_title" class="text-xl font-bold text-white">Website Design & Development</h3>
                         <p data-i18n="srv_1_desc" class="text-slate-400 text-sm leading-relaxed">A modern, mobile-friendly website tailored to your business. You share your story — I handle the design, build, and launch.</p>
                     </div>
@@ -239,6 +231,9 @@
                 <div class="bg-brand-card/60 border border-slate-800 p-8 rounded-lg relative flex flex-col justify-between">
                     <span class="absolute top-4 right-4 text-slate-700 font-mono text-[10px] select-none">[02]</span>
                     <div class="space-y-4">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-brand-orange/10 border border-brand-orange/30 text-brand-orange">
+                            <i class="fa-solid fa-server text-xl" aria-hidden="true"></i>
+                        </div>
                         <h3 data-i18n="srv_2_title" class="text-xl font-bold text-white">Reliable Hosting & Support</h3>
                         <p data-i18n="srv_2_desc" class="text-slate-400 text-sm leading-relaxed">Your site runs on professional datacenter infrastructure with automated backups, security updates, and monitoring. I keep it online and up to date so you can focus on your business.</p>
                     </div>
@@ -250,6 +245,9 @@
                 <div class="bg-brand-card/60 border border-slate-800 p-8 rounded-lg relative flex flex-col justify-between">
                     <span class="absolute top-4 right-4 text-slate-700 font-mono text-[10px] select-none">[03]</span>
                     <div class="space-y-4">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan">
+                            <i class="fa-solid fa-camera-retro text-xl" aria-hidden="true"></i>
+                        </div>
                         <h3 data-i18n="srv_3_title" class="text-xl font-bold text-white">Business Photography</h3>
                         <p data-i18n="srv_3_desc" class="text-slate-400 text-sm leading-relaxed">Professional photos for your website and marketing — your products, your space, your team — shot to make your business look its best.</p>
                     </div>
@@ -261,6 +259,9 @@
                 <div class="bg-brand-card/60 border border-slate-800 p-8 rounded-lg relative flex flex-col justify-between">
                     <span class="absolute top-4 right-4 text-slate-700 font-mono text-[10px] select-none">[04]</span>
                     <div class="space-y-4">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-brand-orange/10 border border-brand-orange/30 text-brand-orange">
+                            <i class="fa-solid fa-rocket text-xl" aria-hidden="true"></i>
+                        </div>
                         <h3 data-i18n="srv_4_title" class="text-xl font-bold text-white">Complete Launch Package</h3>
                         <p data-i18n="srv_4_desc" class="text-slate-400 text-sm leading-relaxed">Website + photos + hosting in one bundle, to get your business online, done properly, from day one.</p>
                     </div>
@@ -275,7 +276,7 @@
         <section id="about" class="relative py-20 md:py-28 border-b border-slate-900 scroll-mt-20">
             <div class="flex flex-col lg:flex-row gap-16 items-center">
                 <div class="flex-1 space-y-6">
-                    <div class="inline-block px-3 py-1 bg-slate-950 border border-slate-800 rounded text-xs font-mono text-brand-cyan uppercase tracking-widest" data-i18n="about_badge">Who I Am</div>
+                    <div class="inline-block px-3 py-1 bg-slate-950 border border-slate-800 rounded text-xs font-mono text-brand-cyan uppercase tracking-widest" data-i18n="about_badge">Who Are We</div>
                     <h2 data-i18n="about_title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Real Infrastructure Experience, Without The Jargon</h2>
                     <p data-i18n="about_text_1" class="text-slate-400 text-sm sm:text-base leading-relaxed">I'm an infrastructure engineer who builds and hosts websites for small businesses. That background is the difference: your site runs on the same kind of enterprise-grade, backed-up, monitored infrastructure that large companies rely on — not a cheap shared host.</p>
                     <p data-i18n="about_text_2" class="text-slate-400 text-sm sm:text-base leading-relaxed">You get a genuinely well-built site and the peace of mind that it's always online — plus someone you can actually call when you need something changed.</p>
@@ -336,21 +337,22 @@
             </div>
         </section>
 
+        <!--
+            Portfolio section intentionally hidden until real client projects are ready to
+            showcase. Markup, styles, and the component structure below are preserved as-is —
+            remove this comment wrapper (and its closing counterpart) to re-enable the section.
+
         <section id="portfolio" class="relative py-20 md:py-28 border-b border-slate-900 scroll-mt-20">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <div class="inline-block px-3 py-1 bg-slate-950 border border-slate-800 rounded text-xs font-mono text-brand-cyan uppercase tracking-widest" data-i18n="portfolio_badge">Our Work</div>
-                <h2 data-i18n="portfolio_title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Recent Projects</h2>
+                <h2 data-i18n="portfolio_title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Portfolio</h2>
                 <p data-i18n="portfolio_desc" class="text-slate-400 text-sm sm:text-base leading-relaxed">A look at websites we've designed and launched for local businesses.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-brand-card/60 border border-slate-800 rounded-lg overflow-hidden flex flex-col">
                     <div class="aspect-video bg-slate-900/60 border-b border-slate-800 flex items-center justify-center relative">
-                        <svg class="w-10 h-10 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16l5-5 4 4 3-3 6 6" />
-                            <circle cx="8" cy="9" r="1.5" />
-                        </svg>
+                        <i class="fa-regular fa-image text-4xl text-slate-700" aria-hidden="true"></i>
                         <span class="absolute top-3 left-3 px-2 py-1 bg-brand-cyan/10 border border-brand-cyan/40 text-brand-cyan text-[9px] font-mono uppercase tracking-widest rounded" data-i18n="portfolio_1_tag">First Client Project</span>
                     </div>
                     <div class="p-6 space-y-2">
@@ -360,9 +362,7 @@
                 </div>
                 <div class="border border-dashed border-slate-800 rounded-lg overflow-hidden flex flex-col opacity-60">
                     <div class="aspect-video bg-slate-900/30 border-b border-dashed border-slate-800 flex items-center justify-center">
-                        <svg class="w-10 h-10 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                        </svg>
+                        <i class="fa-solid fa-plus text-4xl text-slate-700" aria-hidden="true"></i>
                     </div>
                     <div class="p-6 space-y-2">
                         <h3 data-i18n="portfolio_soon_tag" class="text-lg font-bold text-slate-400">Coming Soon</h3>
@@ -371,9 +371,7 @@
                 </div>
                 <div class="border border-dashed border-slate-800 rounded-lg overflow-hidden flex flex-col opacity-60">
                     <div class="aspect-video bg-slate-900/30 border-b border-dashed border-slate-800 flex items-center justify-center">
-                        <svg class="w-10 h-10 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                        </svg>
+                        <i class="fa-solid fa-plus text-4xl text-slate-700" aria-hidden="true"></i>
                     </div>
                     <div class="p-6 space-y-2">
                         <h3 data-i18n="portfolio_soon_tag" class="text-lg font-bold text-slate-400">Coming Soon</h3>
@@ -382,264 +380,110 @@
                 </div>
             </div>
         </section>
+        -->
 
-        <section id="contact" class="relative py-20 md:py-28 scroll-mt-20">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                <div class="lg:col-span-5 space-y-6 flex flex-col justify-between h-full">
-                    <div class="space-y-6">
-                        <div class="inline-block px-3 py-1 bg-slate-950 border border-slate-800 rounded text-xs font-mono text-brand-cyan uppercase tracking-widest" data-i18n="contact_badge">Get in Touch</div>
+        <!--
+            Blog section intentionally hidden until real production articles are ready to
+            publish. Markup, styles, and the component structure below (including post.html,
+            the sample article detail page) are preserved as-is — remove this comment wrapper
+            (and its closing counterpart) and add "Blog" back to the navigation to re-enable it.
+
+        <section id="blog" class="relative py-20 md:py-28 border-b border-slate-900 scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div class="inline-block px-3 py-1 bg-slate-950 border border-slate-800 rounded text-xs font-mono text-brand-cyan uppercase tracking-widest" data-i18n="blog_badge">From the Blog</div>
+                <h2 data-i18n="blog_title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Blog</h2>
+                <p data-i18n="blog_desc" class="text-slate-400 text-sm sm:text-base leading-relaxed">Notes on building, hosting, and looking after small business websites.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="post.html" class="group bg-brand-card/60 border border-slate-800 rounded-lg overflow-hidden flex flex-col hover:border-brand-cyan/40 transition duration-300">
+                    <div class="aspect-video bg-slate-900 border-b border-slate-800 overflow-hidden">
+                        <img src="assets/img/post-01.png" alt="" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" loading="lazy">
+                    </div>
+                    <div class="p-6 space-y-2 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold text-white">How to become a frontend developer</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <span class="text-brand-cyan text-xs font-mono uppercase tracking-widest pt-2" data-i18n="blog_read_more">Read More</span>
+                    </div>
+                </a>
+                <a href="post.html" class="group bg-brand-card/60 border border-slate-800 rounded-lg overflow-hidden flex flex-col hover:border-brand-cyan/40 transition duration-300">
+                    <div class="aspect-video bg-slate-900 border-b border-slate-800 overflow-hidden">
+                        <img src="assets/img/post-02.png" alt="" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" loading="lazy">
+                    </div>
+                    <div class="p-6 space-y-2 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold text-white">My personal productivity system</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <span class="text-brand-cyan text-xs font-mono uppercase tracking-widest pt-2" data-i18n="blog_read_more">Read More</span>
+                    </div>
+                </a>
+                <a href="post.html" class="group bg-brand-card/60 border border-slate-800 rounded-lg overflow-hidden flex flex-col hover:border-brand-cyan/40 transition duration-300">
+                    <div class="aspect-video bg-slate-900 border-b border-slate-800 overflow-hidden">
+                        <img src="assets/img/post-03.png" alt="" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" loading="lazy">
+                    </div>
+                    <div class="p-6 space-y-2 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold text-white">My year in review 2020</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <span class="text-brand-cyan text-xs font-mono uppercase tracking-widest pt-2" data-i18n="blog_read_more">Read More</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+        -->
+
+        <section id="contact" class="relative pt-20 pb-32 md:pt-28 md:pb-40 scroll-mt-20">
+            <div class="contact-grid grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] gap-12 md:items-stretch">
+                <div class="contact-left h-full">
+                    <div class="contact-left-inner h-full flex flex-col justify-center gap-6 p-8 bg-brand-card/60 border border-slate-800 rounded-lg">
+                        <div class="inline-block px-3 py-1 bg-slate-950 border border-slate-800 rounded text-xs font-mono text-brand-cyan uppercase tracking-widest w-fit" data-i18n="contact_badge">Get in Touch</div>
                         <h2 data-i18n="contact_title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-none">Let's Get Your Business Online</h2>
                         <p data-i18n="contact_desc" class="text-slate-400 text-sm sm:text-base leading-relaxed">Ready for a website that makes your business look as good as it deserves? Tell me a bit about your project and I'll get back to you with a plan and a quote — no obligation.</p>
                     </div>
+                </div>
 
-                    <div class="pt-8 space-y-4 text-xs font-mono text-slate-300">
-                        <div class="flex items-center space-x-3 p-4 bg-slate-950/60 border border-slate-800 rounded hover:border-brand-cyan/40 transition duration-300">
-                            <span>📧</span><a href="mailto:admin@bnetcore.ro" class="hover:text-brand-cyan transition">admin@bnetcore.ro</a>
+                <div class="contact-right h-full">
+                <div class="contact-right-inner h-full flex flex-col justify-between gap-6">
+                    <div class="contact-card group relative flex flex-col gap-4 p-6 bg-brand-card/60 border border-slate-800 rounded-lg cursor-pointer transition duration-300 hover:border-brand-orange/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange/50" role="button" tabindex="0" data-contact-action="tel:+40724348522" data-i18n-aria="contact_phone_card_aria" aria-label="Call +4 0724348522">
+                        <div class="flex items-start justify-between">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-brand-orange/10 border border-brand-orange/30 text-brand-orange shrink-0">
+                                <i class="fa-solid fa-phone text-lg" aria-hidden="true"></i>
+                            </div>
+                            <button type="button" class="copy-btn relative shrink-0 w-9 h-9 flex items-center justify-center rounded-md text-slate-500 hover:text-brand-orange hover:bg-slate-900/60 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange/50" data-copy-value="+40724348522" data-copy-tooltip-key="contact_phone_copied" data-i18n-aria="contact_phone_copy_aria" aria-label="Copy phone number">
+                                <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                                <span class="copy-tooltip pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 border border-slate-800 px-2 py-1 text-[10px] font-mono text-brand-orange opacity-0 transition-opacity duration-200">Număr copiat</span>
+                            </button>
                         </div>
-                        <div class="flex items-center space-x-3 p-4 bg-slate-950/60 border border-slate-800 rounded hover:border-brand-orange/40 transition duration-300">
-                            <span>📍</span><span>Bucharest, Romania</span>
+                        <div>
+                            <p data-i18n="contact_phone_label" class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-1">Phone</p>
+                            <p class="text-white font-mono text-sm sm:text-base">+4 0724348522</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card group relative flex flex-col gap-4 p-6 bg-brand-card/60 border border-slate-800 rounded-lg cursor-pointer transition duration-300 hover:border-brand-cyan/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan/50" role="button" tabindex="0" data-contact-action="mailto:contact@bnetcore.ro" data-i18n-aria="contact_email_card_aria" aria-label="Email contact@bnetcore.ro">
+                        <div class="flex items-start justify-between">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan shrink-0">
+                                <i class="fa-solid fa-envelope text-lg" aria-hidden="true"></i>
+                            </div>
+                            <button type="button" class="copy-btn relative shrink-0 w-9 h-9 flex items-center justify-center rounded-md text-slate-500 hover:text-brand-cyan hover:bg-slate-900/60 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan/50" data-copy-value="contact@bnetcore.ro" data-copy-tooltip-key="contact_email_copied" data-i18n-aria="contact_email_copy_aria" aria-label="Copy email address">
+                                <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                                <span class="copy-tooltip pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 border border-slate-800 px-2 py-1 text-[10px] font-mono text-brand-cyan opacity-0 transition-opacity duration-200">Adresă copiată</span>
+                            </button>
+                        </div>
+                        <div>
+                            <p data-i18n="contact_email_label" class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-1">Email</p>
+                            <p class="text-white font-mono text-sm sm:text-base break-all">contact@bnetcore.ro</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="lg:col-span-7 bg-brand-card/40 border border-slate-800 p-8 rounded-lg relative">
-                    <span class="absolute top-4 right-4 text-slate-700 font-mono text-[9px] select-none pointer-events-none">[QUICK REPLY]</span>
-                    
-                    <form id="contact-form" class="space-y-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label for="form-name" class="block text-xs font-mono uppercase tracking-wider text-slate-300" data-i18n="contact_name">Full Name</label>
-                                <input type="text" name="name" id="form-name" required data-i18n="contact_name_placeholder" class="w-full bg-slate-950/80 border border-slate-800 text-slate-100 px-4 py-3 rounded text-sm outline-none transition duration-200 focus:border-brand-cyan">
-                            </div>
-                            <div class="space-y-2">
-                                <label for="form-email" class="block text-xs font-mono uppercase tracking-wider text-slate-300" data-i18n="contact_email">Email Address</label>
-                                <input type="email" name="email" id="form-email" required data-i18n="contact_email_placeholder" class="w-full bg-slate-950/80 border border-slate-800 text-slate-100 px-4 py-3 rounded text-sm outline-none transition duration-200 focus:border-brand-cyan">
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <label for="form-company" class="block text-xs font-mono uppercase tracking-wider text-slate-300" data-i18n="contact_company">Company Name</label>
-                            <input type="text" name="company" id="form-company" data-i18n="contact_company_placeholder" class="w-full bg-slate-950/80 border border-slate-800 text-slate-100 px-4 py-3 rounded text-sm outline-none transition duration-200 focus:border-brand-cyan">
-                        </div>
-                        <div class="space-y-2">
-                            <label for="form-message" class="block text-xs font-mono uppercase tracking-wider text-slate-300" data-i18n="contact_msg">Tell Me About Your Business</label>
-                            <textarea name="message" id="form-message" required rows="5" data-i18n="contact_msg_placeholder" class="w-full bg-slate-950/80 border border-slate-800 text-slate-100 p-4 rounded text-sm outline-none transition duration-200 resize-none focus:border-brand-cyan"></textarea>
-                        </div>
-                        <button type="submit" data-i18n="contact_submit" class="w-full py-4 bg-brand-cyan/10 hover:bg-brand-cyan/20 border border-brand-cyan/40 text-brand-cyan font-mono text-xs uppercase tracking-widest rounded transition duration-300">Get a Quote</button>
-                    </form>
-
-                    <div id="form-success" class="hidden absolute inset-0 bg-brand-card flex flex-col items-center justify-center text-center p-8 rounded-lg space-y-4 z-30">
-                        <div class="w-16 h-16 bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30 rounded-full flex items-center justify-center">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                        </div>
-                        <p data-i18n="contact_success" class="text-sm font-mono text-slate-300 max-w-sm">Thanks! We'll be in touch shortly to talk about your project.</p>
-                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="relative z-10 border-t border-slate-900 bg-slate-950/85 py-12 text-center text-xs text-slate-500 font-mono">
+    <footer class="relative z-10 py-12 text-center text-xs text-slate-500 font-mono">
         <p>&copy; 2026 BNETCORE. <span data-i18n="footer_rights">All rights reserved.</span></p>
     </footer>
 
-    <script>
-        const translations = {
-            en: {
-                nav_home: "Home", nav_services: "Services", nav_about: "About Us", nav_portfolio: "Portfolio", nav_contact: "Contact", nav_cta: "Get a Quote",
-                hero_badge: "Websites for small businesses", hero_title: "A professional website for your business — designed, hosted, and looked after.", hero_subtitle: "I design clean, fast, mobile-friendly websites and host them on enterprise-grade infrastructure with real backups — so your business looks credible online and you never have to worry about the technical side.", hero_cta_primary: "Get a Quote", hero_cta_secondary: "See What's Included",
-                services_badge: "What We Do", services_title: "Everything you need for a strong online presence", services_desc: "From your first website to ongoing hosting and photography, I handle the technical side so you can focus on your business.",
-                srv_1_title: "Website Design & Development", srv_1_desc: "A modern, mobile-friendly website tailored to your business. You share your story — I handle the design, build, and launch.", srv_1_feat1: "Custom Design", srv_1_feat2: "Mobile-Friendly",
-                srv_2_title: "Reliable Hosting & Support", srv_2_desc: "Your site runs on professional datacenter infrastructure with automated backups, security updates, and monitoring. I keep it online and up to date so you can focus on your business.", srv_2_feat1: "Monthly Care Plan", srv_2_feat2: "Automatic Backups",
-                srv_3_title: "Business Photography", srv_3_desc: "Professional photos for your website and marketing — your products, your space, your team — shot to make your business look its best.", srv_3_feat1: "On-Location Shoots", srv_3_feat2: "Web-Ready Editing",
-                srv_4_title: "Complete Launch Package", srv_4_desc: "Website + photos + hosting in one bundle, to get your business online, done properly, from day one.", srv_4_feat1: "All-In-One Bundle", srv_4_feat2: "Fastest Way Online",
-                about_badge: "Who I Am", about_title: "Real Infrastructure Experience, Without The Jargon", about_text_1: "I'm an infrastructure engineer who builds and hosts websites for small businesses. That background is the difference: your site runs on the same kind of enterprise-grade, backed-up, monitored infrastructure that large companies rely on — not a cheap shared host.", about_text_2: "You get a genuinely well-built site and the peace of mind that it's always online — plus someone you can actually call when you need something changed.",
-                about_mock_cta: "Get a Quote", about_mock_1: "Always Online", about_mock_2: "Backed Up Daily", about_mock_3: "Fast & Secure",
-                about_philosophy_title: "What You Get",
-                phil_1_title: "Reliable", phil_1_desc: "Enterprise-grade hosting and automated backups mean your site stays online, protected, and worry-free.",
-                phil_2_title: "Professional", phil_2_desc: "Clean, modern, mobile-first design that makes a great first impression on every device.",
-                phil_3_title: "Yours", phil_3_desc: "You own your website and domain outright — no lock-in, no hidden dependencies.",
-                phil_4_title: "Personal", phil_4_desc: "You talk to me directly. Fast, local support — not a call center.",
-                portfolio_badge: "Our Work", portfolio_title: "Recent Projects", portfolio_desc: "A look at websites we've designed and launched for local businesses.",
-                portfolio_1_tag: "First Client Project", portfolio_1_name: "[Client Name]", portfolio_1_desc: "A short description of the project goes here once launched.",
-                portfolio_soon_tag: "Coming Soon", portfolio_soon_desc: "Your project could be featured here next.",
-                contact_badge: "Get in Touch", contact_title: "Let's Get Your Business Online", contact_desc: "Ready for a website that makes your business look as good as it deserves? Tell me a bit about your project and I'll get back to you with a plan and a quote — no obligation.",
-                contact_name: "Full Name", contact_name_placeholder: "e.g. Alexander Wright", contact_email: "Email Address", contact_email_placeholder: "e.g. alex@yourbusiness.ro",
-                contact_company: "Business Name", contact_company_placeholder: "e.g. Your Business SRL", contact_msg: "Tell Me About Your Business", contact_msg_placeholder: "What kind of business do you have, and what would you like your website to do for you?",
-                contact_submit: "Get a Quote", contact_success: "Thanks! We'll be in touch shortly to talk about your project.", footer_rights: "All rights reserved.",
-                js_sending: "Sending...", js_error_alert: "Something went wrong. Please try again."
-            },
-            ro: {
-                nav_home: "Acasă", nav_services: "Servicii", nav_about: "Despre Noi", nav_portfolio: "Portofoliu", nav_contact: "Contact", nav_cta: "Solicită Ofertă",
-                hero_badge: "Website-uri pentru afaceri mici", hero_title: "Un website profesional pentru afacerea ta — proiectat, găzduit și întreținut.", hero_subtitle: "Proiectez website-uri curate, rapide și optimizate pentru mobil și le găzduiesc pe infrastructură de nivel enterprise, cu backup-uri reale — ca afacerea ta să arate credibil online, iar tu să nu-ți mai faci griji legate de partea tehnică.", hero_cta_primary: "Solicită Ofertă", hero_cta_secondary: "Vezi Ce Include",
-                services_badge: "Ce Facem", services_title: "Tot ce ai nevoie pentru o prezență online puternică", services_desc: "De la primul tău website până la găzduire și fotografie pe termen lung, mă ocup de partea tehnică ca tu să te poți concentra pe afacerea ta.",
-                srv_1_title: "Design & Dezvoltare Website", srv_1_desc: "Un website modern, optimizat pentru mobil, adaptat afacerii tale. Tu îmi spui povestea afacerii, eu mă ocup de design, construcție și lansare.", srv_1_feat1: "Design Personalizat", srv_1_feat2: "Optimizat Pentru Mobil",
-                srv_2_title: "Găzduire & Suport de Încredere", srv_2_desc: "Website-ul tău rulează pe infrastructură profesională de datacenter, cu backup-uri automate, actualizări de securitate și monitorizare. Îl mențin online și la zi, ca tu să te poți concentra pe afacerea ta.", srv_2_feat1: "Abonament Lunar de Mentenanță", srv_2_feat2: "Backup-uri Automate",
-                srv_3_title: "Fotografie pentru Afaceri", srv_3_desc: "Fotografii profesionale pentru website și marketing — produsele, spațiul, echipa ta — realizate ca afacerea ta să arate cât mai bine.", srv_3_feat1: "Ședințe Foto la Sediu", srv_3_feat2: "Editare Pregătită Pentru Web",
-                srv_4_title: "Pachet Complet de Lansare", srv_4_desc: "Website + fotografii + găzduire într-un singur pachet, ca afacerea ta să fie online, făcută cum trebuie, chiar de la început.", srv_4_feat1: "Pachet All-In-One", srv_4_feat2: "Cel Mai Rapid Mod de a Fi Online",
-                about_badge: "Cine Sunt", about_title: "Experiență Reală în Infrastructură, Fără Termeni Tehnici", about_text_1: "Sunt inginer de infrastructură și construiesc și găzduiesc website-uri pentru afaceri mici. Această experiență face diferența: website-ul tău rulează pe același tip de infrastructură de nivel enterprise, cu backup și monitorizare, pe care se bazează companiile mari — nu pe o găzduire ieftină, partajată.", about_text_2: "Primești un website construit cu adevărat bine și liniștea că este mereu online — plus pe cineva pe care chiar îl poți suna atunci când ai nevoie de o modificare.",
-                about_mock_cta: "Solicită Ofertă", about_mock_1: "Mereu Online", about_mock_2: "Backup Zilnic", about_mock_3: "Rapid & Securizat",
-                about_philosophy_title: "Ce Primești",
-                phil_1_title: "De Încredere", phil_1_desc: "Găzduire de nivel enterprise și backup-uri automate, ca website-ul tău să rămână online, protejat și fără griji.",
-                phil_2_title: "Profesional", phil_2_desc: "Design curat, modern, gândit mai întâi pentru mobil, care lasă o impresie excelentă pe orice dispozitiv.",
-                phil_3_title: "Al Tău", phil_3_desc: "Deții integral website-ul și domeniul tău — fără dependență de furnizor, fără condiționări ascunse.",
-                phil_4_title: "Personal", phil_4_desc: "Vorbești direct cu mine. Suport rapid și local — nu un call center.",
-                portfolio_badge: "Lucrările Noastre", portfolio_title: "Proiecte Recente", portfolio_desc: "O privire asupra website-urilor pe care le-am proiectat și lansat pentru afaceri locale.",
-                portfolio_1_tag: "Primul Proiect Client", portfolio_1_name: "[Numele Clientului]", portfolio_1_desc: "O scurtă descriere a proiectului va apărea aici după lansare.",
-                portfolio_soon_tag: "În Curând", portfolio_soon_desc: "Proiectul tău ar putea fi prezentat aici, în curând.",
-                contact_badge: "Contactează-ne", contact_title: "Hai Să Punem Afacerea Ta Online", contact_desc: "Ești pregătit pentru un website care să arate la fel de bine ca afacerea ta? Spune-mi câteva cuvinte despre proiectul tău și îți răspund cu un plan și o ofertă — fără obligații.",
-                contact_name: "Nume Complet", contact_name_placeholder: "ex. Alexandru Popescu", contact_email: "Adresă Email", contact_email_placeholder: "ex. alex@afacereata.ro",
-                contact_company: "Numele Afacerii", contact_company_placeholder: "ex. Afacerea Ta SRL", contact_msg: "Spune-mi Despre Afacerea Ta", contact_msg_placeholder: "Ce fel de afacere ai și ce ai vrea ca website-ul tău să facă pentru tine?",
-                contact_submit: "Solicită Ofertă", contact_success: "Mulțumim! Te vom contacta în curând pentru a discuta despre proiectul tău.", footer_rights: "Toate drepturile rezervate.",
-                js_sending: "Se trimite...", js_error_alert: "Ceva nu a funcționat corect. Te rugăm să încerci din nou."
-            }
-        };
-
-        function switchLanguage(lang) {
-            document.documentElement.lang = lang;
-            localStorage.setItem('bnetcore-lang', lang);
-            
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang]?.[key]) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.setAttribute('placeholder', translations[lang][key]);
-                    } else {
-                        el.innerHTML = translations[lang][key];
-                    }
-                }
-            });
-
-            const enBtns = document.querySelectorAll('.lang-btn-en');
-            const roBtns = document.querySelectorAll('.lang-btn-ro');
-            if (lang === 'en') {
-                enBtns.forEach(b => b.className = "lang-btn-en px-2 py-1 rounded transition text-brand-cyan border border-brand-cyan/30");
-                roBtns.forEach(b => b.className = "lang-btn-ro px-2 py-1 rounded transition text-slate-400 border border-transparent hover:text-white");
-            } else {
-                roBtns.forEach(b => b.className = "lang-btn-ro px-2 py-1 rounded transition text-brand-cyan border border-brand-cyan/30");
-                enBtns.forEach(b => b.className = "lang-btn-en px-2 py-1 rounded transition text-slate-400 border border-transparent hover:text-white");
-            }
-        }
-
-        // Theme Controller (light / dark / system)
-        const systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-        function resolveTheme(pref) {
-            return pref === 'system' ? (systemThemeQuery.matches ? 'dark' : 'light') : pref;
-        }
-
-        function updateThemeButtons(pref) {
-            document.querySelectorAll('.theme-btn').forEach(btn => {
-                const isActive = btn.getAttribute('data-theme-btn') === pref;
-                btn.classList.toggle('bg-brand-cyan/20', isActive);
-                btn.classList.toggle('ring-1', isActive);
-                btn.classList.toggle('ring-brand-cyan/50', isActive);
-            });
-        }
-
-        function setTheme(pref) {
-            localStorage.setItem('bnetcore-theme', pref);
-            document.documentElement.setAttribute('data-theme', resolveTheme(pref));
-            updateThemeButtons(pref);
-        }
-
-        systemThemeQuery.addEventListener('change', () => {
-            const storedPref = localStorage.getItem('bnetcore-theme') || 'system';
-            if (storedPref === 'system') {
-                document.documentElement.setAttribute('data-theme', resolveTheme('system'));
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const storedLang = localStorage.getItem('bnetcore-lang') || 'en';
-            switchLanguage(storedLang);
-
-            const storedTheme = localStorage.getItem('bnetcore-theme') || 'system';
-            setTheme(storedTheme);
-        });
-
-        // Hamburger Menu Mobile Controller
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.toggle('hidden');
-            menuIcon.setAttribute('d', isHidden ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
-        });
-
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-            });
-        });
-
-        // Fixed Offset Header Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetID = this.getAttribute('href');
-                if (targetID === '#') return;
-                const targetElement = document.querySelector(targetID);
-                if (targetElement) {
-                    const headerOffset = 80;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.scrollY - headerOffset;
-                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                }
-            });
-        });
-
-        // OPTIMIZED BNETCORE FORM CONTROLLER UNIFIED WITH YOUR BASH/JS LOGIC
-        const form = document.getElementById('contact-form');
-        const formSuccess = document.getElementById('form-success');
-        const submitBtn = form.querySelector('button[type="submit"]');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const currentLang = localStorage.getItem('bnetcore-lang') || 'en';
-            const formData = new FormData(form);
-            
-            // Append deployment parameters
-            formData.append("access_key", "57c21282-1c66-4277-bfee-4fa31a5cb81b");
-            formData.append("subject", "New Website Inquiry — Bnetcore Solutions");
-            formData.append("from_name", "Bnetcore Solutions Website");
-
-            const originalText = submitBtn.textContent;
-
-            submitBtn.textContent = translations[currentLang]['js_sending'];
-            submitBtn.disabled = true;
-
-            try {
-                const response = await fetch("https://api.web3forms.com/submit", {
-                    method: "POST",
-                    body: formData
-                });
-
-                const data = await response.json();
-
-                if (response.ok && data.success) {
-                    formSuccess.classList.remove('hidden');
-                    formSuccess.classList.add('flex');
-                    form.reset();
-                    
-                    setTimeout(() => {
-                        formSuccess.classList.add('hidden');
-                        formSuccess.classList.remove('flex');
-                    }, 5000);
-                } else {
-                    alert("Error: " + (data.message || "Invalid Token Context"));
-                }
-
-            } catch (error) {
-                alert(translations[currentLang]['js_error_alert']);
-            } finally {
-                submitBtn.disabled = false;
-                switchLanguage(currentLang); 
-            }
-        });
-    </script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

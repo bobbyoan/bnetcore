@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ro" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            const pref = localStorage.getItem('bnetcore-theme') || 'system';
+            const resolved = pref === 'system'
+                ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                : pref;
+            document.documentElement.setAttribute('data-theme', resolved);
+        })();
+    </script>
+    <title>How to become a frontend developer | BNETCORE Blog</title>
+    <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
+
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+    <link rel="canonical" href="https://bnetcore.ro/post.html">
+    <meta name="theme-color" content="#060814">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="BNETCORE Solutions">
+    <meta property="og:title" content="How to become a frontend developer | BNETCORE Blog">
+    <meta property="og:url" content="https://bnetcore.ro/post.html">
+    <meta name="twitter:card" content="summary">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="assets/styles/theme.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: ['selector', '[data-theme="dark"]'],
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            deep: 'var(--bg-deep)',
+                            card: 'var(--bg-card)',
+                            cyan: 'var(--accent-cyan)',
+                            orange: 'var(--accent-orange)',
+                            border: 'var(--border-color)'
+                        },
+                        slate: {
+                            100: 'var(--slate-100)',
+                            300: 'var(--slate-300)',
+                            400: 'var(--slate-400)',
+                            500: 'var(--slate-500)',
+                            700: 'var(--slate-700)',
+                            800: 'var(--slate-800)',
+                            900: 'var(--slate-900)',
+                            950: 'var(--slate-950)'
+                        },
+                        white: 'var(--heading-color)'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-slate-100 antialiased selection:bg-brand-cyan/30 selection:text-white">
+
+    <div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bg-gradient-to-b from-transparent via-brand-deep to-brand-deep pointer-events-none z-0"></div>
+
+    <header class="sticky top-0 z-50 w-full border-b border-slate-800 bg-brand-deep/85 backdrop-blur-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
+            <a href="index.html#home" class="flex items-center space-x-3 group relative z-10 focus:outline-none">
+                <div class="relative w-8 h-8 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-brand-cyan/20 rounded-lg blur group-hover:bg-brand-cyan/30 transition duration-300"></div>
+                    <svg class="w-7 h-7 text-brand-cyan relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 002 2h3m-1 8h1a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 0V4a2 2 0 00-2-2h-3a2 2 0 00-2 2v3m0 0H5a2 2 0 00-2 2v3a2 2 0 002 2h1" />
+                        <circle cx="12" cy="13" r="4" class="stroke-brand-orange" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-mono text-xl font-bold tracking-wider text-white">BNET<span class="text-brand-cyan">CORE</span></span>
+                    <span class="text-[9px] font-mono tracking-widest text-slate-500 uppercase -mt-1.5">Solutions</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="index.html#home" data-i18n="nav_home" class="text-slate-300 hover:text-brand-cyan transition duration-200">Home</a>
+                <a href="index.html#services" data-i18n="nav_services" class="text-slate-300 hover:text-brand-cyan transition duration-200">Services</a>
+                <a href="index.html#about" data-i18n="nav_about" class="text-slate-300 hover:text-brand-cyan transition duration-200">About Us</a>
+                <a href="index.html#contact" data-i18n="nav_contact" class="text-slate-300 hover:text-brand-cyan transition duration-200">Contact</a>
+                <!--
+                    Portfolio and Blog are hidden until real content exists. Uncomment the links
+                    below, in their original position, when re-enabling either section:
+                <a href="index.html#portfolio" data-i18n="nav_portfolio" class="text-slate-300 hover:text-brand-cyan transition duration-200">Portfolio</a>
+                <a href="index.html#blog" data-i18n="nav_blog" class="text-slate-300 hover:text-brand-cyan transition duration-200">Blog</a>
+                -->
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-4 relative z-10">
+                <div class="relative" data-settings>
+                    <button type="button" class="settings-toggle h-10 w-10 flex items-center justify-center rounded-md bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-brand-cyan hover:border-brand-cyan/40 transition" aria-haspopup="true" aria-expanded="false" aria-label="Settings">
+                        <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                    </button>
+                    <div class="settings-panel hidden absolute right-0 top-full mt-2 w-56 bg-brand-card border border-slate-800 rounded-lg shadow-2xl p-4 space-y-4 z-50">
+                        <div>
+                            <p data-i18n="settings_language" class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Language</p>
+                            <div class="flex items-center space-x-2 bg-slate-900/80 border border-slate-800 p-1 rounded-md text-xs font-mono">
+                                <button onclick="switchLanguage('en')" class="lang-btn-en flex-1 px-2 py-1.5 rounded transition text-slate-400 border border-transparent hover:text-white">EN</button>
+                                <button onclick="switchLanguage('ro')" class="lang-btn-ro flex-1 px-2 py-1.5 rounded transition text-brand-cyan border border-brand-cyan/30">RO</button>
+                            </div>
+                        </div>
+                        <div>
+                            <p data-i18n="settings_theme" class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Theme</p>
+                            <div class="flex items-center space-x-1 bg-slate-900/80 border border-slate-800 p-1 rounded-md text-xs">
+                                <button onclick="setTheme('light')" data-theme-btn="light" class="theme-btn flex-1 px-2 py-1.5 rounded transition" title="Light" aria-label="Light theme"><i class="fa-solid fa-sun" aria-hidden="true"></i></button>
+                                <button onclick="setTheme('dark')" data-theme-btn="dark" class="theme-btn flex-1 px-2 py-1.5 rounded transition" title="Dark" aria-label="Dark theme"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+                                <button onclick="setTheme('system')" data-theme-btn="system" class="theme-btn flex-1 px-2 py-1.5 rounded transition" title="Auto" aria-label="System theme"><i class="fa-solid fa-display" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="index.html#contact" data-i18n="nav_cta" class="h-10 px-5 flex items-center justify-center bg-slate-950 border border-slate-800 rounded-md text-xs font-mono tracking-wider text-white hover:border-brand-cyan transition duration-300">Contact Us</a>
+            </div>
+
+            <div class="flex md:hidden items-center space-x-3 relative z-20">
+                <button id="mobile-menu-btn" class="text-slate-300 hover:text-brand-cyan p-2 focus:outline-none" aria-label="Toggle navigation menu" aria-controls="mobile-menu">
+                    <i id="menu-icon" class="fa-solid fa-bars text-2xl" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-brand-deep/95 backdrop-blur-lg px-4 pt-4 pb-6 space-y-4">
+            <a href="index.html#home" data-i18n="nav_home" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">Home</a>
+            <a href="index.html#services" data-i18n="nav_services" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">Services</a>
+            <a href="index.html#about" data-i18n="nav_about" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">About Us</a>
+            <!--
+                Portfolio and Blog are hidden until real content exists. Uncomment the links
+                below, in their original position, when re-enabling either section:
+            <a href="index.html#portfolio" data-i18n="nav_portfolio" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">Portfolio</a>
+            <a href="index.html#blog" data-i18n="nav_blog" class="block text-base text-slate-300 hover:text-brand-cyan py-2 border-b border-slate-900">Blog</a>
+            -->
+            <a href="index.html#contact" data-i18n="nav_contact" class="block text-base text-slate-300 hover:text-brand-cyan py-2">Contact</a>
+            <div class="pt-2 border-t border-slate-900 relative" data-settings>
+                <button type="button" class="settings-toggle flex items-center gap-2 text-sm text-slate-300 hover:text-brand-cyan transition py-2 w-full" aria-haspopup="true" aria-expanded="false" aria-label="Settings">
+                    <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                    <span data-i18n="settings_label">Settings</span>
+                </button>
+                <div class="settings-panel hidden mt-2 w-full bg-slate-950/60 border border-slate-800 rounded-lg p-4 space-y-4">
+                    <div>
+                        <p data-i18n="settings_language" class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Language</p>
+                        <div class="flex items-center space-x-2 bg-slate-900 border border-slate-800 p-1 rounded-md text-xs font-mono">
+                            <button onclick="switchLanguage('en')" class="lang-btn-en flex-1 px-2 py-1.5 rounded transition text-slate-400 border border-transparent hover:text-white">EN</button>
+                            <button onclick="switchLanguage('ro')" class="lang-btn-ro flex-1 px-2 py-1.5 rounded transition text-brand-cyan border border-brand-cyan/30">RO</button>
+                        </div>
+                    </div>
+                    <div>
+                        <p data-i18n="settings_theme" class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Theme</p>
+                        <div class="flex items-center space-x-1 bg-slate-900 border border-slate-800 p-1 rounded-md text-xs">
+                            <button onclick="setTheme('light')" data-theme-btn="light" class="theme-btn flex-1 px-3 py-1.5 rounded" title="Light" aria-label="Light theme"><i class="fa-solid fa-sun" aria-hidden="true"></i></button>
+                            <button onclick="setTheme('dark')" data-theme-btn="dark" class="theme-btn flex-1 px-3 py-1.5 rounded" title="Dark" aria-label="Dark theme"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+                            <button onclick="setTheme('system')" data-theme-btn="system" class="theme-btn flex-1 px-3 py-1.5 rounded" title="Auto" aria-label="System theme"><i class="fa-solid fa-display" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <article class="py-12 md:py-16 max-w-3xl mx-auto">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">How to become a frontend developer</h1>
+            <div class="flex items-center pt-6 space-x-4">
+                <img src="assets/img/blog-author.jpg" class="h-14 w-14 rounded-full border-2 border-slate-800" alt="Christy Smith">
+                <div>
+                    <span class="block text-sm font-bold text-white">By Christy Smith</span>
+                    <span class="block text-xs font-mono text-slate-500">February 27, 2022</span>
+                </div>
+            </div>
+
+            <div class="article-body pt-10">
+                <h2>Lorem ipsum dolor sit amet</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                <h3>Lorem ipsum dolor sit amet</h3>
+                <p>Possent quippe. Conata fera ab Hersilie iam auditur haesit. Culpa ignis retia Aonides ictus crescendo micantes, petere, ambustaque vicem in digitos iubet cornigeris.</p>
+                <ul>
+                    <li>Iura demens satus vino simulac celanda</li>
+                    <li>Exhibuere frustra utque</li>
+                    <li>Iura demens satus vino simulac celanda</li>
+                    <li>Exhibuere frustra utque</li>
+                    <li>Panda pars umidus</li>
+                </ul>
+                <h4>Lorem ipsum dolor sit amet</h4>
+                <p>Possent quippe. Conata fera ab Hersilie iam auditur haesit. Culpa ignis retia Aonides ictus crescendo micantes, petere, ambustaque vicem in digitos iubet cornigeris.</p>
+                <pre><code>fonts.forEach(font => {
+  const { id, name, likes } = font;
+  if (
+    likes >= 30
+    || (likes === 50 && likes != 0)
+    || favorites[id]
+  ) {
+    coolFonts++;
+    console.log(`${name} is cool!`);
+  }
+});</code></pre>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-6">
+                <span class="bg-slate-950 border border-slate-800 text-slate-400 px-3 py-1 rounded font-mono text-[10px] uppercase tracking-widest">Frontend</span>
+                <span class="bg-slate-950 border border-slate-800 text-slate-400 px-3 py-1 rounded font-mono text-[10px] uppercase tracking-widest">Design</span>
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-slate-900 flex flex-col items-center text-center sm:flex-row sm:text-left gap-6">
+                <img src="assets/img/blog-author.jpg" class="w-20 h-20 rounded-full border-2 border-slate-800 shrink-0" alt="Christy Smith">
+                <div>
+                    <h3 class="text-lg font-bold text-white">Christy Smith</h3>
+                    <p class="pt-2 text-sm text-slate-400 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+                </div>
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-slate-900 flex justify-between text-sm font-mono uppercase tracking-widest">
+                <a href="index.html#blog" class="flex items-center gap-2 text-slate-400 hover:text-brand-cyan transition">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Blog
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="relative z-10 py-12 text-center text-xs text-slate-500 font-mono">
+        <p>&copy; 2026 BNETCORE. <span data-i18n="footer_rights">All rights reserved.</span></p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
