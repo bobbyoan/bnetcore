@@ -1,0 +1,16 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home2/bnetcore/public_html/
+
+    - /bin/cp -R assets $DEPLOYPATH
+
+    - /bin/cp index.html $DEPLOYPATH
+
+    - if [ -f post.html ]; then /bin/cp post.html $DEPLOYPATH; fi
+
+    - if [ -f favicon.ico ]; then /bin/cp favicon.ico $DEPLOYPATH; fi
+
+    - if [ -f robots.txt ]; then /bin/cp robots.txt $DEPLOYPATH; fi
+
+    - if [ -f sitemap.xml ]; then /bin/cp sitemap.xml $DEPLOYPATH; fi
